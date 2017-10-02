@@ -5,7 +5,7 @@ import Model.MemberRegistry;
 import View.DisplayInstructions;
 
 /**
- * Created by Mehdi on 28/09/2017 for the YachtClubManagement project.
+ * Created by Void on 28/09/2017 for the YachtClubManagement project.
  */
 public class Administrator {
 
@@ -69,19 +69,26 @@ public class Administrator {
 
     private Member selectMember(MemberRegistry myList){
         int choice= myConsole.selectMember();
-        Member m;
-        if(choice==1){
+        Member m = null;
+        if(choice==0){
+            System.out.println(" _____________________________________________");
+            System.out.println("| ҉҉҉҉҉҉        End of Search        ҉҉҉҉҉҉   |") ;
+            System.out.println("|_____________________________________________|\n");
+            manipulate();
+        }
+        else if(choice==1){
             m = myList.idMember(myConsole.getInterestID());
-            return m==null? m:selectMember(myList);         // stack overflow and number of tries will not be an issue for the current iteration.
+            return m==null?selectMember(myList): m;         // stack overflow and number of tries will not be an issue for the current iteration.
         }
         else if (choice==2){
             m = myList.nameMember(myConsole.getInterestName());
-            return m==null? m:selectMember(myList);
+            return m==null? selectMember(myList): m;
         }
-        else{
+        else if(choice==3){
             m = myList.socialMember( myConsole.getInterestNr());
-            return m==null? m:selectMember(myList);
-        }
+            return m==null? selectMember(myList) : m;
+        }else return null;
+        return m;
     }
 
 }

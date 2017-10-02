@@ -99,7 +99,7 @@ public class Console implements DisplayInstructions {
 
     private void DisplayMemberBoatInfo(ArrayList<Boat> m_boats) {
         for(Boat b : m_boats){
-            System.out.println("ID: "+b.getB_id()+ " .) Type: "+b.getType()+" : Name "+b.getB_Name()+". //LENGTH: "+b.getLength());
+            System.out.println(" ID: "+b.getB_id()+ " .) Type: "+b.getType()+" : Name "+b.getB_Name()+". //LENGTH: "+b.getLength());
         }
     }
 
@@ -116,7 +116,11 @@ public class Console implements DisplayInstructions {
 
     @Override
     public void showMemberInformation(Member my) {
-        //TODO: IMPLEMENT
+        System.out.println("\tMember ID : " + my.getM_Id());
+        System.out.println("\tName: " + my.getM_name());
+        System.out.println("\tPersonal-number: " + my.getM_personal_number() + "");
+        DisplayMemberBoatInfo(my.getM_boats());
+
     }
     @Override
     public void displayEditMember() {
@@ -127,6 +131,7 @@ public class Console implements DisplayInstructions {
     public int selectMember() {
         System.out.println("-----------Select Member -----------");
         System.out.println("Find member using:");
+        System.out.println("0.) Exit");
         System.out.println("1.) Member id");
         System.out.println("2.) Name");
         System.out.println("3.) Personal Number");
