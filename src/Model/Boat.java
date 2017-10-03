@@ -1,8 +1,11 @@
 package Model;
 
-/**
- * Created by Mehdi on 28/09/2017 for the YachtClubManagement project.
- */
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Boat {
     public enum Boatstype{
         SAILBOAT,

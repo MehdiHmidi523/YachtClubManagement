@@ -4,6 +4,9 @@ import Model.Member;
 import Model.MemberRegistry;
 import View.DisplayInstructions;
 
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+
 /**
  * Created by Void on 28/09/2017 for the YachtClubManagement project.
  */
@@ -16,51 +19,64 @@ public class Administrator {
     public Administrator(DisplayInstructions myView){ //initialize()
         System.out.println(" Hello! This is  Secretary Administrator mode");
         setMyDisplay(myView);
-        //Registry((ArrayList) dao.MembersDAO.jaxbXMLToObject());  //TODO: to implement later.
+        Registry= dao.MembersDAO.jaxbXMLToObject();  //TODO: to implement correctly later.
 
     }
+
     public void manipulate(){
-        while(true){
-            command = myConsole.userSelection();
-            if(command==0){
-                myConsole.exitDisplay();
-                System.exit(-1); //End of Session
-            }
-            else if(command==1){
-                myConsole.showMemberRegistry(Registry.getMemberList()); //Type of list, handled in the view attempted high cohesion.
-            }else if (command==2){
-                myConsole.displayShowBoats(Registry.getMemberList()); // Show Current Berth allocations.
-            }else if (command==3){
-                Registry.addMember(myConsole.displayCreateMember());    //Create a new member.
-                Member nw = Registry.getMemberList().get(Registry.getM_count());
-                for(int i=0;i<nw.getM_numOfBoats();i++){
-                    nw.addBoat(myConsole.displayAddBoat(nw));
-                    myConsole.displaySuccessOperation("Added Boat");
-                }
-                myConsole.displaySuccessOperation("CREATED A NEW MEMBER");
-            }else if(command==4){
-                    Member my = selectMember(Registry);
-                    myConsole.showMemberInformation(my);
-                    editMember(my);
-            }
+       try{
+           while(true){
+               command = myConsole.userSelection();
+               if(command==0){
+                   myConsole.exitDisplay();
+                   System.exit(-1); //End of Session
+               }
+               else if(command==1){
+                   myConsole.showMemberRegistry(Registry.getMemberList()); //Type of list, handled in the view attempted high cohesion.
+               }else if (command==2){
+                   myConsole.displayShowBoats(Registry.getMemberList()); // Show Current Berth allocations.
+               }else if (command==3){
+                   Registry.addMember(myConsole.displayCreateMember());    //Create a new member.
+                   Member nw = Registry.getMemberList().get(Registry.getM_count());
+                   for(int i=0;i<nw.getM_numOfBoats();i++){
+                       nw.addBoat(myConsole.displayAddBoat(nw));
+                       myConsole.displaySuccessOperation("Added Boat");
+                   }
+                   myConsole.displaySuccessOperation("CREATED A NEW MEMBER");
+               }else if(command==4){
+                   Member my=selectMember(Registry);
+                   if(my==null)
+                       myConsole.displayErrorMessage(" MEMBER NOT FOUND !");
+                   else{
+                       myConsole.showMemberInformation(my);
+                       editMember(my);
+                   }
 
-            else{
-               /* showList(md_list);
-                if (md_list.getMemberList().iterator().hasNext()){
-                    int m_id = selectMember(md_list);
-                    showMember(m_id);
-                    deleteMember(m_id);
-                }*/
-                // call the registry and tell it to check if this member is present using the Id provided from the console.
-                // check the boolean value from the registry if done is true then success display or error display
-                // TODO: check if i have to update ID of all members or not ? no such scenario is not based on reality EXPAND HERE !!!!
-                //Delete a Member
-            }
-        }
+               } else{
+                   System.out.println("Choose Member to delete or its Boats !");
+                   Member my=selectMember(Registry);
+                   if(my==null)
+                       myConsole.displayErrorMessage(" MEMBER NOT FOUND !");
+                   else{
+                       myConsole.showMemberInformation(my);
+                       deleteMember();
+                   }
+               }
+               dao.MembersDAO.jaxbObjectToXML(Registry);
+           }
+       }catch (InputMismatchException e){
+           System.err.println("Input Mismatch Exception  CHECK YOURSELF !");
+       }
+
     }
 
-    private void editMember(Member my) {
-        myConsole.displayEditMember();
+    private void deleteMember() {
+        myConsole.displayDeleteMember(Registry);
+    }
+
+    private Member editMember(Member my) {
+        myConsole.displayEditMember(my);
+        return my;
     }
 
     public void setMyDisplay(DisplayInstructions myConsole) {
@@ -69,7 +85,7 @@ public class Administrator {
 
     private Member selectMember(MemberRegistry myList){
         int choice= myConsole.selectMember();
-        Member m = null;
+        Member m = new Member();
         if(choice==0){
             System.out.println(" _____________________________________________");
             System.out.println("| ҉҉҉҉҉҉        End of Search        ҉҉҉҉҉҉   |") ;
@@ -78,17 +94,18 @@ public class Administrator {
         }
         else if(choice==1){
             m = myList.idMember(myConsole.getInterestID());
-            return m==null?selectMember(myList): m;         // stack overflow and number of tries will not be an issue for the current iteration.
+
         }
         else if (choice==2){
             m = myList.nameMember(myConsole.getInterestName());
-            return m==null? selectMember(myList): m;
+
         }
         else if(choice==3){
             m = myList.socialMember( myConsole.getInterestNr());
-            return m==null? selectMember(myList) : m;
+
         }else return null;
         return m;
     }
+
 
 }

@@ -1,11 +1,17 @@
 package Model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 
 /**
- * Created by Mehdi on 28/09/2017 for the YachtClubManagement project.
+ * Created by Void on 28/09/2017 for the YachtClubManagement project.
  */
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class MemberRegistry {
 
     @XmlElement(name="member")
@@ -26,7 +32,10 @@ public class MemberRegistry {
             person.setM_Id(count+1);
             memberList.add(person);
     }
-
+    public void deleteMember(int member_id){
+        if (!memberList.remove(idMember(member_id)))
+            System.err.println("Member not found!");
+    }
     public int getM_count() {
         return count;
     }

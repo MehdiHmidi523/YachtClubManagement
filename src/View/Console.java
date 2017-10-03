@@ -2,13 +2,14 @@ package View;
 
 import Model.Boat;
 import Model.Member;
+import Model.MemberRegistry;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * Created by Mehdi on 28/09/2017 for the YachtClubManagement project.
+ * Created by Void on 28/09/2017 for the YachtClubManagement project.
  */
 public class Console implements DisplayInstructions {
 
@@ -34,7 +35,7 @@ public class Console implements DisplayInstructions {
         System.out.println("3.) Create a new member");
         System.out.println("4.) Edit a members/boats information");
         System.out.println("5.) Delete a Member");
-        return getChoice(1,5);
+        return getChoice(0,5);
     }
     @Override
     public void exitDisplay() {
@@ -120,11 +121,66 @@ public class Console implements DisplayInstructions {
         System.out.println("\tName: " + my.getM_name());
         System.out.println("\tPersonal-number: " + my.getM_personal_number() + "");
         DisplayMemberBoatInfo(my.getM_boats());
-
     }
+
     @Override
-    public void displayEditMember() {
-        //TODO: Edit wow
+    public void displayEditMember(Member my) {
+        System.out.println("-----------Select Member Info to EDIT ! -----------");
+        System.out.println("0.) Exit");
+        System.out.println("1.) Name");
+        System.out.println("2.) Personal Number");
+        System.out.println("3.) Boat");
+        if(getChoice(0,3)==1){
+            editMemberName(my); // put member in brackets.
+        }else if(getChoice(0,3)==2){
+            editMemberPersonalNumber(my);
+        }else if(getChoice(0,3)==3){
+            editBoat(my);
+        }else
+            System.out.println(" Exit Search !");
+    }
+
+    public void editMemberName(Member editMember){
+        System.out.println("Please enter the new first name and last name");
+        String name = sc.nextLine();
+        editMember.setM_name(name);
+        displaySuccessOperation("*****  CHANGED MEMBER NAME *****");
+    }
+
+    @Override
+    public void editBoat(Member b) {
+        DisplayMemberBoatInfo(b.getM_boats());
+
+        System.out.println("Which Boat do you Want to Edit ?? \nWrite Down Boat ID: ");
+
+        int choice = getChoice(1,b.getM_boats().size() );
+        Boat myBoat = b.getM_boats().get(choice);
+        System.out.println(" *********** EDIT BOAT OPERATION ***********");
+        System.out.println("-----------  Change Boat's type or keep it as it is ! -----------");
+        for (int i = 0; i< Boat.Boatstype.values().length; i++ ){
+            System.out.println("\t" + i + ".) " + Boat.Boatstype.values()[i]);
+        }
+        int choix = getChoice(0, Boat.Boatstype.values().length-1);
+        Boat.Boatstype t = Boat.Boatstype.values()[choix];
+        myBoat.setType(t);
+
+        System.out.println("Change Boat's length:" + myBoat.getLength());
+        System.out.println("Please enter the new length! ");
+        myBoat.setLength(sc.nextDouble());
+
+        System.out.println("Change Boat's Name:" + myBoat.getB_Name());
+        System.out.println("Please enter the new Name! ");
+        myBoat.setB_Name(sc.nextLine());
+        displaySuccessOperation("Edited Boat " +myBoat.getB_id());
+    }
+
+    @Override
+    public void editMemberPersonalNumber(Member editMember){
+        System.out.println("Please enter the new personal number in this form YYMMDD-XXXX");
+        String personal_number = sc.nextLine();
+        editMember.setM_personal_number(personal_number);
+        displaySuccessOperation("***** CHANGED PERSONAL-NUMBER *****");
+
     }
 
     @Override
@@ -166,11 +222,32 @@ public class Console implements DisplayInstructions {
     }
 
     @Override
-    public void displayDeleteMember() {//TODO: IMPLEMENT
+    public void displayDeleteMember(MemberRegistry myList) {
+        System.out.println("Choose Member to delete its information or one of its Boats");
+        System.out.println("0.) Exit");
+        System.out.println("1.) Id member to delete");
+        System.out.println("2.) Id member to delete its boat(s)");
+
+        showVerboseList(myList.getMemberList());
+        if(getChoice(0,2)==1){
+            myList.deleteMember(getInterestID());
+        }else if(getChoice(0,2)==2){
+            displayDeleteBoat(myList.idMember(getInterestID()));
+        }else
+            System.out.println(" Exit Deletion !");
+        //TODO: IMPLEMENT
     }
 
     @Override
-    public void displayDeleteBoat() {//TODO: IMPLEMENT
+    public void displayDeleteBoat(Member b) {
+
+        DisplayMemberBoatInfo(b.getM_boats());
+        System.out.println("Which Boat do you Want to Delete ?? \nWrite Down Boat ID: ");
+        int choice = getChoice(1,b.getM_boats().size() );
+        b.getM_boats().remove(choice);
+        System.out.println(b.getM_name()+"'s updated Boats list : ");
+        DisplayMemberBoatInfo(b.getM_boats());
+        displaySuccessOperation(" DELETED BOAT FROM MEMBER AND BERTHS! ");
     }
 
     @Override
@@ -244,21 +321,6 @@ public class Console implements DisplayInstructions {
             System.out.print(" //Owner: "+ m.getM_name());
             DisplayMemberBoatInfo(m.getM_boats());
         }
-    }
-
-    @Override
-    public void displayConfirmationAlert(String toBeConfirmedString) {
-        System.out.println("Are you sure this is the correct name "+toBeConfirmedString+" ?\n Answer: Y/N");
-        boolean end=false;
-        do{
-        char a = sc.nextLine().charAt(0);
-        if((Character.compare(Character.toUpperCase(a), 'Y') != 0) && (Character.compare(Character.toUpperCase(a), 'N') != 0)) {
-            displaySuccessOperation("REGISTERED NAME");
-            end = true;
-        }else
-            displayErrorMessage("Please answer only with 'Y' or 'N'");
-       }while(!end);
-
     }
 
     @Override
