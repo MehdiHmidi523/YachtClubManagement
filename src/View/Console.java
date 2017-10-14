@@ -13,11 +13,10 @@ import java.util.Scanner;
  */
 public class Console implements DisplayInstructions {
 
-    Scanner sc;
+    private Scanner sc;
     public Console(){
         sc  = new Scanner(System.in);
     }
-
     @Override
     public void showWelcomeMessage() {
         System.out.println(" _____________________________________________");
@@ -26,6 +25,7 @@ public class Console implements DisplayInstructions {
         System.out.println("|_____________________________________________|\n");
 
     }
+
     @Override
     public int userSelection() {
         System.out.println("----------- Selection -----------");
@@ -37,16 +37,21 @@ public class Console implements DisplayInstructions {
         System.out.println("5.) Delete a Member");
         return getChoice(0,5);
     }
+
     @Override
     public void exitDisplay() {
         System.out.println(" _____________________________________________");
         System.out.println("|                                             |");
         System.out.println("| ҉҉҉҉҉҉        End of Session         ҉҉҉҉҉҉ |") ;
         System.out.println("|_____________________________________________|\n");
-        // Could implement a timer and add time spent in the session
+
     }
 
-    /**********************   LIST JOLLY PIRATE's MEMBERS   *******************************/
+    /*
+     * LIST JOLLY PIRATE's MEMBERS
+     * @param memberList;
+     *
+     */
     @Override
     public void showMemberRegistry(ArrayList<Member> memberList) {
         if(memberList.size()==0){
@@ -60,6 +65,7 @@ public class Console implements DisplayInstructions {
         }
 
     }
+
     @Override
     public int selectListType() {
         System.out.println("-----------List Type-----------");
@@ -67,6 +73,7 @@ public class Console implements DisplayInstructions {
                          "\n2.) Verbose list (name, personal number, member id and boats with boat information)");
         return getChoice(1,2);
     }
+
     @Override
     public void showCompactList(Iterable<Member> members) { // the reason behind iterable is to
         if (!members.iterator().hasNext())
@@ -81,6 +88,7 @@ public class Console implements DisplayInstructions {
             }
         }
     }
+
     @Override
     public void showVerboseList(Iterable<Member> members) {
         if (!members.iterator().hasNext())
@@ -93,26 +101,29 @@ public class Console implements DisplayInstructions {
                 System.out.print(", Personal-number: " + m.getM_personal_number());
                 System.out.print(", Member-ID: " +m.getM_Id());
                 System.out.println(", Registered Boats: ");
-                DisplayMemberBoatInfo(m.getM_boats());
+                DisplayMemberBoatInfo(m);
             }
         }
     }
 
-    private void DisplayMemberBoatInfo(ArrayList<Boat> m_boats) {
-        for(Boat b : m_boats){
-            System.out.println(" ID: "+b.getB_id()+ " .) Type: "+b.getType()+" : Name "+b.getB_Name()+". //LENGTH: "+b.getLength());
+    private void DisplayMemberBoatInfo(Member b) {
+        for(Boat boats : b.getM_boats()){
+            System.out.println(" ID: "+boats.getB_id()+ " .) Type: "+boats.getType()+" : Name "+boats.getB_Name()+". LENGTH: "+boats.getLength());
         }
     }
 
-    /***************************************************************************/
-
     private int getChoice(int first, int last) {
-        int choice;
-        do{
-            System.out.println("Please select Instruction");
-            choice = sc.nextInt();
-        }while(choice>=last && choice<=first);
-        return choice;
+        try{
+            int choice;
+            do{
+                System.out.println("Please select Instruction Number");
+                choice = sc.nextInt();
+            }while(choice>last || choice<first); // logical OR || so that the loop continues if one of the conditions is not correct
+            return choice;
+        }catch(InputMismatchException i){
+            //System.err.println("ERROR is in getChoice() CONTINUE ");
+            return -99;
+        }
     }
 
     @Override
@@ -120,11 +131,11 @@ public class Console implements DisplayInstructions {
         System.out.println("\tMember ID : " + my.getM_Id());
         System.out.println("\tName: " + my.getM_name());
         System.out.println("\tPersonal-number: " + my.getM_personal_number() + "");
-        DisplayMemberBoatInfo(my.getM_boats());
+        DisplayMemberBoatInfo(my);
     }
 
     @Override
-    public void displayEditMember(Member my) {
+    public Member displayEditMember(Member my) {
         System.out.println("-----------Select Member Info to EDIT ! -----------");
         System.out.println("0.) Exit");
         System.out.println("1.) Name");
@@ -138,18 +149,24 @@ public class Console implements DisplayInstructions {
             editBoat(my);
         }else
             System.out.println(" Exit Search !");
+        return null;
     }
 
+    @Override
     public void editMemberName(Member editMember){
         System.out.println("Please enter the new first name and last name");
-        String name = sc.nextLine();
+        Scanner newMan = new Scanner(System.in);
+        String name;
+        do{
+          name= newMan.nextLine();
+        }while(!name.equals(""));
         editMember.setM_name(name);
         displaySuccessOperation("*****  CHANGED MEMBER NAME *****");
     }
 
     @Override
     public void editBoat(Member b) {
-        DisplayMemberBoatInfo(b.getM_boats());
+        DisplayMemberBoatInfo(b);
 
         System.out.println("Which Boat do you Want to Edit ?? \nWrite Down Boat ID: ");
 
@@ -186,22 +203,29 @@ public class Console implements DisplayInstructions {
     @Override
     public int selectMember() {
         System.out.println("-----------Select Member -----------");
-        System.out.println("Find member using:");
+        System.out.println("\tFind member using:");
         System.out.println("0.) Exit");
         System.out.println("1.) Member id");
         System.out.println("2.) Name");
         System.out.println("3.) Personal Number");
-        return getChoice(1,3);
+        return getChoice(0,3);
     }
+
     @Override
-    public int getInterestID() {
-        System.out.println("********* Input Member id *********");
-        int myId;
-        do{
-            myId= sc.nextInt();
-        }while (myId > 0);
-        return myId;
+    public int getInterestID() { //TODO: VALIDATION TYPE INTEGER blocks of code like these are scattered around put them in the technical services package
+        System.out.println("********* Input Member id >0 *********");
+        try{
+           int myId;
+           do{
+               myId= sc.nextInt();
+           }while (myId < 0);
+           return myId;
+        }catch(InputMismatchException e){
+           displayErrorMessage(": SYNTAX ERROR!! Follow input type correctly !!"+ e.getMessage());
+        }
+           return 0;
     }
+
     @Override
     public String getInterestName() {
         System.out.println("********* Input Member Name *********");
@@ -211,6 +235,7 @@ public class Console implements DisplayInstructions {
         }
         return str;
     }
+
     @Override
     public String getInterestNr() {
         System.out.println("********* Input Member Personal Number *********");
@@ -222,31 +247,30 @@ public class Console implements DisplayInstructions {
     }
 
     @Override
-    public void displayDeleteMember(MemberRegistry myList) {
-        System.out.println("Choose Member to delete its information or one of its Boats");
+    public Member displayDeleteMember(MemberRegistry myList) {
+        System.out.println("\tChoose Member to DELETE or DELETE his/her Boats !");
         System.out.println("0.) Exit");
         System.out.println("1.) Id member to delete");
         System.out.println("2.) Id member to delete its boat(s)");
 
-        showVerboseList(myList.getMemberList());
         if(getChoice(0,2)==1){
-            myList.deleteMember(getInterestID());
+            return myList.getMemberList().get(getInterestID()-1);
         }else if(getChoice(0,2)==2){
-            displayDeleteBoat(myList.idMember(getInterestID()));
+            displayDeleteBoat(myList.getMemberList().get(getInterestID()-1));
         }else
-            System.out.println(" Exit Deletion !");
-        //TODO: IMPLEMENT
+            displayErrorMessage(" Exit Deletion !");
+    return null;
     }
 
     @Override
     public void displayDeleteBoat(Member b) {
 
-        DisplayMemberBoatInfo(b.getM_boats());
+        DisplayMemberBoatInfo(b);
         System.out.println("Which Boat do you Want to Delete ?? \nWrite Down Boat ID: ");
-        int choice = getChoice(1,b.getM_boats().size() );
+        int choice = getChoice(0,b.getM_boats().size() );
         b.getM_boats().remove(choice);
         System.out.println(b.getM_name()+"'s updated Boats list : ");
-        DisplayMemberBoatInfo(b.getM_boats());
+        DisplayMemberBoatInfo(b);
         displaySuccessOperation(" DELETED BOAT FROM MEMBER AND BERTHS! ");
     }
 
@@ -260,7 +284,7 @@ public class Console implements DisplayInstructions {
             do{
                 System.out.println("Enter "+nw.getM_name()+"'s Personal Number: yymmdd-xxxx ");
                 String swedId= sc.nextLine();
-                 /* Check Encapsulation */
+                 /* Check Validation */
                 if(isCorrect(swedId,getFirstPart(swedId),getSecondPart(swedId))){
                     System.out.println(swedId+ " Valid Personal Number");
                     nw.setM_personal_number(swedId);
@@ -268,20 +292,24 @@ public class Console implements DisplayInstructions {
                 } else
                     System.out.println(swedId+"Invalid Personal Number!! Again:");
             }while(!end);
-
+            //Create Boat is nested in Create Member
             System.out.println("How many Boats is Member "+nw.getM_name()+ " registering ?");
-            int nm=sc.nextInt();
+            int nm;
             do{
+                nm=sc.nextInt();
                 if(nm>0)
                     nw.setM_numOfBoats(nm);
+                else
+                    System.out.println("a positive number! : ");
             }while(nm<0);
 
             return nw;
-        }catch(InputMismatchException e){
+        }catch(InputMismatchException e ){
             displayErrorMessage(": SYNTAX ERROR!! Follow input type correctly !!"+ e.getMessage());
-
+        }catch(IndexOutOfBoundsException o){
+            displayErrorMessage(" SYNTAX ERROR!! Follow Personal number type correctly !!");
         }
-        return nw;
+            return nw;
     }
 
     @Override
@@ -294,33 +322,44 @@ public class Console implements DisplayInstructions {
                 System.out.println(i + ".) " + Boat.Boatstype.values()[i]);
             }
             int choice = getChoice(0, Boat.Boatstype.values().length-1);
-            Boat.Boatstype myBoat = Boat.Boatstype.values()[choice];
-            new_Boat.setType(myBoat);
+            if(choice!=-99){
+                Boat.Boatstype myBoat = Boat.Boatstype.values()[choice];
+                new_Boat.setType(myBoat);
+            }else
+                return new_Boat;
 
+            float len;
             System.out.println("\tSpecify Boat's Length");
-            Double len = sc.nextDouble();
-            new_Boat.setLength(len);
+            do{
+                len = sc.nextFloat();
+                    if(len>0)
+                        new_Boat.setLength(len);
+                    else
+                        System.out.println("a positive number be realistic too ! : ");
+            } while(len<1);
+
             Scanner name = new Scanner(System.in);
             System.out.println("\tSpecify Boat's Name");
             String nm = name.nextLine();
             new_Boat.setB_Name(nm);
 
             return new_Boat;
+
         }catch(InputMismatchException e){
-         displayErrorMessage(": SYNTAX ERROR!! Follow input type correctly !!");
+            displayErrorMessage(": SYNTAX ERROR!! Follow input type correctly !!");
             return new_Boat;
         }
     }
 
     @Override
     public void displayShowBoats(ArrayList<Member> members) {
-        if(members.size()==0){
-            displayErrorMessage("The Yacht Club has no members!");
+        if(members.size()!=0){
+            for (Member m : members){
+                System.out.print(" //Owner: "+ m.getM_name());
+                DisplayMemberBoatInfo(m);
+            }
         }else
-        for (Member m : members){
-            System.out.print(" //Owner: "+ m.getM_name());
-            DisplayMemberBoatInfo(m.getM_boats());
-        }
+            displayErrorMessage("The Yacht Club has no members!");
     }
 
     @Override
@@ -333,16 +372,30 @@ public class Console implements DisplayInstructions {
         System.err.println("_______ ERROR! "+str+" ______");
     }
 
+    @Override
+    public void endSearch(){
+        System.out.println(" _____________________________________________");
+        System.out.println("|                                             |");
+        System.out.println("| ҉҉҉҉҉҉        End of Search        ҉҉҉҉҉҉   |") ;
+        System.out.println("|_____________________________________________|\n");
+    }
+
+/*
+    @Override
+    public boolean proceed() {
+            System.out.println("Press a character to continue or 'q' to quit");
+            return (Character.compare(getInput(Validate.ValidationType.String).charAt(0), 'q') != 0);
+    }
+*/
+
 
     /************************ Personal Number Helper Methods ***************************/
     private static String getFirstPart(String swedId){
-        String fPart = swedId.substring(0,6);
-        return fPart;
+        return swedId.substring(0,6);
     }
 
     private static String getSecondPart(String swedId){
-        String sPart = swedId.substring(7);
-        return sPart;
+       return swedId.substring(7);
     }
 
     private static boolean isCorrect(String id,String fPart,String sPart){
@@ -360,7 +413,6 @@ public class Console implements DisplayInstructions {
     }
 
     private static boolean checksum(String theId){
-
         theId = theId.replace("-", ""); // convert to a string filled with integers.
         int x;
         int sum=0;
@@ -375,10 +427,7 @@ public class Console implements DisplayInstructions {
                 x=Character.getNumericValue(theId.charAt(i));
             sum+=x; //the resulting integers are added as the array is filled
         }
-        int checksum =10-(sum%10);
-        if(checksum == Character.getNumericValue(theId.charAt(theId.length()-1)))
-            return true;
-
-        return false;
+        int checksum = (10-(sum%10))%10;
+        return checksum == Character.getNumericValue(theId.charAt(theId.length()-1));
     }
 }

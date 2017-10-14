@@ -6,6 +6,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 
+import static TechnicalServices.Validation.Validate.isValidMember;
+
 /**
  * Created by Void on 28/09/2017 for the YachtClubManagement project.
  */
@@ -15,7 +17,7 @@ import java.util.ArrayList;
 public class MemberRegistry {
 
     @XmlElement(name="member")
-    ArrayList<Member> memberList=new ArrayList<Member>();;
+    private ArrayList<Member> memberList=new ArrayList<Member>();
 
     private int count=memberList.size();
 
@@ -28,26 +30,23 @@ public class MemberRegistry {
         return memberList;
     }
 
-    public void addMember(Member person){
-            person.setM_Id(count+1);
+    public boolean addMember(Member person){
+        if(isValidMember(person)){
+            person.setM_Id(memberList.size()+1);
             memberList.add(person);
+            TechnicalServices.Persistence.MembersDAO.jaxbObjectToXML(this);
+            return true;
+        }else
+            return false;
     }
+
     public void deleteMember(int member_id){
-        if (!memberList.remove(idMember(member_id)))
+        if (!memberList.remove(memberList.get((member_id-1))))
             System.err.println("Member not found!");
     }
+
     public int getM_count() {
-        return count;
-    }
-
-    public Member idMember(int id) {
-
-        for (Member m : memberList) {
-            if (m.getM_Id() == id){
-                return m;
-            }
-        }
-        return null;
+        return memberList.size();
     }
 
     public Member nameMember(String interestName) {

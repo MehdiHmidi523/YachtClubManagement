@@ -2,6 +2,8 @@ package Model;
 
 import java.util.ArrayList;
 
+import static TechnicalServices.Validation.Validate.isValidBoat;
+
 /**
  * Created by Void on 28/09/2017 for the YachtClubManagement project.
  */
@@ -11,7 +13,7 @@ public class Member {
     private String m_personal_number;
     private int m_Id;
     private ArrayList<Boat> boats = new ArrayList<Boat>();
-    private int m_numOfBoats=boats.size();
+    private int m_numOfBoats=0;
     public Member(){
     }
     public int getM_numOfBoats() {
@@ -45,15 +47,18 @@ public class Member {
     }
     public void setM_boats(){ }
 
-    public void addBoat(Boat myBoat){
-        myBoat.setB_id(m_numOfBoats);
-        boats.add(myBoat);
+    public boolean addBoat(Boat myBoat){
+        if(isValidBoat(myBoat)){
+            myBoat.setB_id(boats.size());
+            boats.add(myBoat);
+            return true;
+        }else
+        return false;
     }
 
     public void deleteBoat(Boat myBoat){
-            if (!boats.remove(myBoat))
-                System.err.println("Boat not found!");
+        if (!boats.remove(myBoat))
+            System.err.println("Boat not found!");
     }
-
 
 }

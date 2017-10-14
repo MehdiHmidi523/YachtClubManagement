@@ -20,9 +20,10 @@ public interface DisplayInstructions {
     void showVerboseList(Iterable<Member> m_it); 	// “Verbose List”; name, personal number, member id and boats with boat information
 
     void showMemberInformation(Member my);
-    void displayEditMember(Member my);
-    void editBoat(Member b);
+    Member displayEditMember(Member my);
 
+    void editMemberName(Member editMember);
+    void editBoat(Member b);
     void editMemberPersonalNumber(Member editMember);
 
     int selectMember();
@@ -30,7 +31,7 @@ public interface DisplayInstructions {
     String getInterestName();
     String getInterestNr();
 
-    void displayDeleteMember(MemberRegistry myList);
+    Member displayDeleteMember(MemberRegistry myList);
     void displayDeleteBoat(Member b);
 
     Member displayCreateMember();
@@ -39,6 +40,6 @@ public interface DisplayInstructions {
 
     void displaySuccessOperation(String str);
     void displayErrorMessage(String str);
-
-
+    void endSearch();
+   // boolean proceed();
 }

@@ -1,3 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <memberRegistry>
+    <member>
+        <m_Id>1</m_Id>
+        <m_name>MR</m_name>
+        <m_numOfBoats>1</m_numOfBoats>
+        <m_personal_number>9612121575</m_personal_number>
+    </member>
+    <member>
+        <m_Id>2</m_Id>
+        <m_name>23</m_name>
+        <m_numOfBoats>1</m_numOfBoats>
+        <m_personal_number>9612121575</m_personal_number>
+    </member>
+    <count>0</count>
 </memberRegistry>
