@@ -41,5 +41,15 @@ public interface DisplayInstructions {
     void displaySuccessOperation(String str);
     void displayErrorMessage(String str);
     void endSearch();
-   // boolean proceed();
+
+   /* void showAuthentication();
+
+    String authenticateUsername();
+
+    String authenticatePassword();
+
+    void showSuccessfulLogin();
+
+    void showInvalidLogin();
+    */
 }

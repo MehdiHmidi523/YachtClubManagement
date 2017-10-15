@@ -2,7 +2,8 @@ package Model;
 
 import java.util.ArrayList;
 
-import static TechnicalServices.Validation.Validate.isValidBoat;
+import static Controller.Administrator.isValidBoat;
+
 
 /**
  * Created by Void on 28/09/2017 for the YachtClubManagement project.

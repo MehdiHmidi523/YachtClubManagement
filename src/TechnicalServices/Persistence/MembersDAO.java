@@ -13,7 +13,7 @@ import Model.MemberRegistry;
 public class MembersDAO {
 	
 	//private static final String File = "./resources/members.xml";			// in eclipse
-	private static final String File = "resources/members.xml";				// as .jar
+	private static final String File = "../resources/members.xml";				// as .jar
 	
     public static MemberRegistry jaxbXMLToObject() {
         try {

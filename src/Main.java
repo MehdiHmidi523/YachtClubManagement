@@ -9,9 +9,8 @@ public class Main {
     public static void main(String[] args){
         Console session = new Console();
         session.showWelcomeMessage();
-        //login service?
-        Administrator secretary = new Administrator(session);  //  TODO: change when implementing authentication in next iteration.
-        secretary.manipulate();
+        Administrator user = new Administrator(session);
+        user.manipulate();
     }
 
 }

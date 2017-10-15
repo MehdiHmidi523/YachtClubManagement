@@ -6,7 +6,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 
-import static TechnicalServices.Validation.Validate.isValidMember;
+import static Controller.Administrator.isValidMember;
+
 
 /**
  * Created by Void on 28/09/2017 for the YachtClubManagement project.
@@ -41,8 +42,17 @@ public class MemberRegistry {
     }
 
     public void deleteMember(int member_id){
-        if (!memberList.remove(memberList.get((member_id-1))))
+        int ne = member_id;
+        if (!memberList.remove(memberList.get((ne-1))))
             System.err.println("Member not found!");
+        updateId(ne); //verbatim
+    }
+
+    private void updateId(int n) {
+        for(Member m : memberList){
+            if(m.getM_Id()>n)
+            m.setM_Id(m.getM_Id()-1);
+        }
     }
 
     public int getM_count() {
@@ -66,4 +76,6 @@ public class MemberRegistry {
         }
         return null;
     }
+
+
 }

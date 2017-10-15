@@ -3,23 +3,27 @@ package Controller;
 import Model.Boat;
 import Model.Member;
 import Model.MemberRegistry;
+import TechnicalServices.Logging.Authenticate;
 import View.DisplayInstructions;
 
 import java.util.InputMismatchException;
-
-import static TechnicalServices.Validation.Validate.isValidBoat;
-import static TechnicalServices.Validation.Validate.isValidMember;
 
 /**
  * Created by Void on 28/09/2017 for the YachtClubManagement project.
  */
 public class Administrator {
 
+    public enum ValidationType {   // for grade 3 & 4 this is irrelevant at this moment.
+        SwedishID,
+        PositiveDouble,
+        Character,
+        Integer,
+        String
+    }
     private MemberRegistry Registry;
     private DisplayInstructions myConsole;
-
+    //private Authenticate auth = new Authenticate();   //irrelevant at this point
     public Administrator(DisplayInstructions myView){ //initialize()
-        System.out.println(" Hello! This is  Secretary Administrator mode");
         setMyDisplay(myView);
         Registry = TechnicalServices.Persistence.MembersDAO.jaxbXMLToObject();
     }
@@ -27,41 +31,38 @@ public class Administrator {
     public void manipulate(){
         try {
             int i=0;
-            do {
+            //if (auth.isLogged() || login()){   //grade 3 irrelevant for now
+            while(i!=1){
                 int command = myConsole.userSelection();
                 if(command ==0){
                     myConsole.exitDisplay();
                     System.exit(-1); //End of Session
+                    TechnicalServices.Persistence.MembersDAO.jaxbObjectToXML(Registry);
                 }
-
                 else if(command ==1){//Type of list, handled in the view attempted high cohesion.
                     myConsole.showMemberRegistry(Registry.getMemberList());
-
                 }else if (command ==2){// Show Current Berth allocations.
                     myConsole.displayShowBoats(Registry.getMemberList());
-
                 }else if (command ==3){//Create a new member.
                     createMember();
-                    addBoatsToMember();
-
                 }else if(command ==4){//Edit a members/boats information
-                    if(Registry.getM_count()!=0){
-                            editMember();
-                    }else
+                    if(Registry.getM_count()!=0)
+                        editMember();
+                    else
                         myConsole.displayErrorMessage("Registry is Empty");
-
                 } else if(command ==5){
-                    if(Registry.getM_count()!=0){
-                      deleteMember();
-                    }else
+                    if(Registry.getM_count()!=0)
+                        deleteMember();
+                    else
                         myConsole.displayErrorMessage("Registry is Empty");
-
                 }else{
                     myConsole.displayErrorMessage("Comply with Instructions!");
                     i++;
                     myConsole.exitDisplay();
                 }
-            }while(i!=1);
+            }
+
+
         }catch (InputMismatchException e){
             myConsole.displayErrorMessage("Input Mismatch! System Exit");
             myConsole.exitDisplay();
@@ -74,7 +75,8 @@ public class Administrator {
      * Checks Member information is Valid then adds Member to MemberRegistry.
      */
     private void createMember(){
-        if(!Registry.addMember(myConsole.displayCreateMember())){
+        Member me = myConsole.displayCreateMember();
+        if(!Registry.addMember(me) || addBoatsToMember(me)){
             myConsole.displaySuccessOperation("CREATED A NEW MEMBER");
         }
     }
@@ -82,8 +84,7 @@ public class Administrator {
     /*
      *Add the number of boats to the last member in the member registry.
      */
-    private void addBoatsToMember(){
-        Member nw = Registry.getMemberList().get(Registry.getM_count()-1);
+    private boolean addBoatsToMember(Member nw){
         int b=nw.getM_numOfBoats();
         for(int i=0;i<b;i++){
             Boat b1 = (myConsole.displayAddBoat(nw));
@@ -93,15 +94,18 @@ public class Administrator {
             }
             else{
                 myConsole.displayErrorMessage("Missing or Incorrect Information RESTARTING PROCESS! ");
+                myConsole.displayErrorMessage("This member was not added to the REGISTRY.");
+                return false;
             }
         }
+        return true;
     }
 
     private void deleteMember() {
         myConsole.showVerboseList(Registry.getMemberList());  //display registry then display selection option then check validity of member
 
         Member my=selectMember(Registry);
-        if(!isValidMember(my))
+        if(my==null ||!isValidMember(my))
             myConsole.displayErrorMessage(" MEMBER NOT FOUND !");
         else{
             myConsole.showMemberInformation(my);
@@ -111,15 +115,15 @@ public class Administrator {
         }
     }
 
-    private void editMember() {//BREACH OF GRASP SEPARATION  of responsibilities
+    private void editMember() {// a much better separation of MV has been achieved in this iteration.
         myConsole.showVerboseList(Registry.getMemberList());
         Member my = selectMember(Registry);
-        if(!isValidMember(my))
+        if(my==null || !isValidMember(my))
             myConsole.displayErrorMessage(" MEMBER NOT FOUND!");
         else{
              myConsole.showMemberInformation(my);
              myConsole.displayEditMember(my);
-
+             myConsole.displaySuccessOperation("Edited Member");
         }
     }
 
@@ -144,11 +148,38 @@ public class Administrator {
             m = myList.nameMember(str);
 
 
-        } else if(choice==3)
-            m = myList.socialMember( myConsole.getInterestNr());
-        else return null;
+        } else if(choice==3) {
+            String pnum = myConsole.getInterestNr();
+            if(!pnum.equals("")){
+               // pnum = pnum.replace("-", "");
+                m = myList.socialMember(pnum);
+            }else {
+                m=null;
+            }
+        }
         return m;
     }
 
+    /*  private boolean login(){
+        myConsole.showAuthentication();
+        String username = myConsole.authenticateUsername();
+        String password = myConsole.authenticatePassword();
+        if (auth.authenticate(username, password)) myConsole.showSuccessfulLogin();
+        else myConsole.showInvalidLogin();
+        return auth.isLogged();
+    }*/
 
+    public static boolean isValidMember(Member man) {
+        if(man==null)
+            return false;
+        else
+            return man.getM_name() != null && man.getM_personal_number() != null && man.getM_boats()!= null && man.getM_numOfBoats() != 0;
+    }
+
+    public static boolean isValidBoat(Boat machine){
+        if(machine==null)
+            return false;
+        else
+            return machine.getB_Name() != null && machine.getLength() != 0 && machine.getType() !=null;
+    }
 }
