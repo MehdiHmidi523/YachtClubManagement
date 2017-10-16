@@ -31,7 +31,7 @@ public class Administrator {
     public void manipulate(){
         try {
             int i=0;
-            //if (auth.isLogged() || login()){   //grade 3 irrelevant for now
+            //if (@auth.isLogged() || login()){   //grade 3 irrelevant for now
             while(i!=1){
                 int command = myConsole.userSelection();
                 if(command ==0){
