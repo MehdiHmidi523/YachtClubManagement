@@ -1,10 +1,12 @@
 package TechnicalServices.Persistence;
 
 import Model.Berths;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+
 import java.io.File;
 
 /**
@@ -12,13 +14,12 @@ import java.io.File;
  */
 public class BoatsDAO {
 
-    //private static final String File = "./resources/members.xml";			// in eclipse
-    private static final String File1 = "/resources/berths.xml";				// as .jar
+    private static final String File1 = "../resources/boats.xml";				// as .jar
 
     public static Berths jaxbXMLToObject() {
         try {
-            JAXBContext context = JAXBContext.newInstance(Berths.class);
-            Unmarshaller un = context.createUnmarshaller();
+            JAXBContext context1 = JAXBContext.newInstance(Berths.class);
+            Unmarshaller un = context1.createUnmarshaller();
             return (Berths) un.unmarshal(new File(File1));
         } catch (JAXBException e) {
             e.printStackTrace();
@@ -30,8 +31,8 @@ public class BoatsDAO {
     public static void jaxbObjectToXML(Berths md_list) {
 
         try {
-            JAXBContext context = JAXBContext.newInstance(Berths.class);
-            Marshaller m = context.createMarshaller();
+            JAXBContext context1 = JAXBContext.newInstance(Berths.class);
+            Marshaller m = context1.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             m.marshal(md_list, new File(File1));
         } catch (JAXBException e) {

@@ -14,8 +14,8 @@ import java.util.ArrayList;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Berths {
 
-    @XmlElement(name="Berths")
-    ArrayList<Boat> boatList = new ArrayList<>();
+    @XmlElement(name="Boat")
+    ArrayList<Boat> boatList = new ArrayList<Boat>();
 
     public Berths(MemberRegistry registry){
         populate(registry);

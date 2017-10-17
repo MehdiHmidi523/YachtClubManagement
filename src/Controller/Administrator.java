@@ -73,6 +73,7 @@ public class Administrator {
             myConsole.displayErrorMessage("Input Mismatch! System Exit");
             myConsole.exitDisplay();
         }
+        myConsole.displaySuccessOperation("Saved Session!");
         TechnicalServices.Persistence.MembersDAO.jaxbObjectToXML(Registry);
         TechnicalServices.Persistence.BoatsDAO.jaxbObjectToXML(berths);
     }

@@ -35,7 +35,6 @@ public class MemberRegistry {
         if(isValidMember(person)){
             person.setM_Id(memberList.size()+1);
             memberList.add(person);
-            TechnicalServices.Persistence.MembersDAO.jaxbObjectToXML(this);
             return true;
         }else
             return false;

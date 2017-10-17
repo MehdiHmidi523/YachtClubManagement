@@ -6,13 +6,10 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-
-import Model.Member;
 import Model.MemberRegistry;
 
 public class MembersDAO {
-	
-	//private static final String File = "./resources/members.xml";			// in eclipse
+
 	private static final String File = "../resources/members.xml";				// as .jar
 	
     public static MemberRegistry jaxbXMLToObject() {
