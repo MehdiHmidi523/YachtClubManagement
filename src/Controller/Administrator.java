@@ -34,7 +34,6 @@ public class Administrator {
     public void manipulate(){
         try {
             int i=0;
-            if(auth.isLogged() || login())
             do{
                 int command = myConsole.userSelection();
                 if(command ==0){
@@ -45,30 +44,31 @@ public class Administrator {
                 else if(command ==1){//Type of list, handled in the view attempted high cohesion.
                     myConsole.showMemberRegistry(Registry.getMemberList());
                 }else if (command ==2){// Show Current Berth allocations.
-                    myConsole.displayShowBoats(Registry.getMemberList());
+                    myConsole.displayShowBoats(berths.getBoatList());
                 }else if (command ==3){//Create a new member.
-                    createMember();
+                    if (auth.isLogged() || login()){
+                        createMember();
+                    }
                 }else if(command ==4){//Edit a members/boats information
-                    if(Registry.getM_count()!=0)
-                        editMember();
-                    else
-                        myConsole.displayErrorMessage("Registry is Empty");
+                    if (auth.isLogged() || login()){
+                        if(Registry.getM_count()!=0)
+                            editMember();
+                        else
+                            myConsole.displayErrorMessage("Registry is Empty");
+                    }
                 } else if(command ==5){
-                    if(Registry.getM_count()!=0)
-                        deleteMember();
-                    else
-                        myConsole.displayErrorMessage("Registry is Empty");
+                    if (auth.isLogged() || login()){
+                        if(Registry.getM_count()!=0)
+                            deleteMember();
+                        else
+                            myConsole.displayErrorMessage("Registry is Empty");
+                    }
                 }else{
                     myConsole.displayErrorMessage("Comply with Instructions!");
                     i++;
                     myConsole.exitDisplay();
                 }
-            }while(i!=1 && myConsole.proceed());
-            else{
-
-
-            }
-
+            }while(i!=1 || myConsole.proceed());
         }catch (InputMismatchException e){
             myConsole.displayErrorMessage("Input Mismatch! System Exit");
             myConsole.exitDisplay();

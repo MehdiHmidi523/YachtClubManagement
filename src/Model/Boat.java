@@ -7,6 +7,15 @@ import javax.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Boat {
+    Member owner;
+    public Boat(Member nw){
+        owner=nw;
+    }
+
+    public Member getMember() {
+        return owner;
+    }
+
     public enum Boatstype{
         SAILBOAT,
         MOTORBOAT,

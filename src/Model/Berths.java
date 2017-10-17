@@ -14,7 +14,7 @@ import java.util.ArrayList;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Berths {
 
-    @XmlElement(name="Boat")
+    @XmlElement(name="Berths")
     ArrayList<Boat> boatList = new ArrayList<>();
 
     public Berths(MemberRegistry registry){
@@ -32,6 +32,7 @@ public class Berths {
     }
 
 
-
-
+    public ArrayList<Boat> getBoatList() {
+        return boatList;
+    }
 }

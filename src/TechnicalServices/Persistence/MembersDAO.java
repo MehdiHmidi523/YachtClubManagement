@@ -19,16 +19,13 @@ public class MembersDAO {
         try {
             JAXBContext context = JAXBContext.newInstance(MemberRegistry.class);
             Unmarshaller un = context.createUnmarshaller();
-            MemberRegistry md_list = (MemberRegistry) un.unmarshal(new File(File));
-            return md_list;
+            return (MemberRegistry) un.unmarshal(new File(File));
         } catch (JAXBException e) {
             e.printStackTrace();
-        }
-        return null;
+        }return null;
     }
 
     public static void jaxbObjectToXML(MemberRegistry md_list) {
-
         try {
             JAXBContext context = JAXBContext.newInstance(MemberRegistry.class);
             Marshaller m = context.createMarshaller();

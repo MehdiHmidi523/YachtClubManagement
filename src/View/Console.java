@@ -31,7 +31,7 @@ public class Console implements DisplayInstructions {
         System.out.println("----------- Selection -----------");
         System.out.println("0.) Exit");
         System.out.println("1.) Show members");
-        System.out.println("2.) Show Current Berth allocations    // Only Valid for Current Session's created Members CANNOT LOAD PREVIOUS BOATS.");   // TODO: keep in mind for grade 3 and 4
+        System.out.println("2.) Show Current Berth allocations ");
         System.out.println("3.) Create a new member");
         System.out.println("4.) Edit a members/boats information");
         System.out.println("5.) Delete a Member");
@@ -342,7 +342,7 @@ sc1.close();
 
     @Override
     public Boat displayAddBoat(Member nw) {
-        Boat new_Boat = new Boat() ;
+        Boat new_Boat = new Boat(nw) ;
         System.out.println("*****    Add Boat to Member: " + nw.getM_name()+"   *****") ;
         try{
             System.out.println("\tSelect Boat's type:");
@@ -380,11 +380,11 @@ sc1.close();
     }
 
     @Override
-    public void displayShowBoats(ArrayList<Member> members) {
+    public void displayShowBoats(ArrayList<Boat> members) {
         if(members.size()!=0){
-            for (Member m : members){
-                System.out.print(" //Owner: "+ m.getM_name());
-                DisplayMemberBoatInfo(m);
+            for (Boat m : members){
+                System.out.print(" //Owner: "+ m.getMember().getM_name());
+                DisplayMemberBoatInfo(m.getMember());
             }
         }else
             displayErrorMessage("The Yacht Club has no members!");
