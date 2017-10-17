@@ -407,8 +407,8 @@ sc1.close();
         System.out.println("| ҉҉҉҉҉҉        End of Search        ҉҉҉҉҉҉   |") ;
         System.out.println("|_____________________________________________|\n");
     }
-    // GRADE 3 irrelevant for this Submission
-    /*@Override
+
+    @Override
     public void showAuthentication() {
         System.out.println(" _________________________________________________________________");
         System.out.println("|                                                                 |");
@@ -434,7 +434,7 @@ sc1.close();
     @Override
     public void showInvalidLogin() {
        displayErrorMessage(" Wrong username or password -----");
-    }*/
+    }
 
 /* // will be attempted in grade 4.
     @Override

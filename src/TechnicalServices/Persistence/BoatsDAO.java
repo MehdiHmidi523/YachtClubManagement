@@ -16,7 +16,7 @@ import java.io.File;
 public class BoatsDAO {
 
     //private static final String File = "./resources/members.xml";			// in eclipse
-    private static final String File = "../resources/members.xml";				// as .jar
+    private static final String File = "../resources/berths.xml";				// as .jar
 
     public static Berths jaxbXMLToObject() {
         try {

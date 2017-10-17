@@ -22,7 +22,7 @@ public class Administrator {
     }
     private MemberRegistry Registry;
     private DisplayInstructions myConsole;
-    //private Authenticate auth = new Authenticate();   //irrelevant at this point
+    private Authenticate auth = new Authenticate();
     public Administrator(DisplayInstructions myView){ //initialize()
         setMyDisplay(myView);
         Registry = TechnicalServices.Persistence.MembersDAO.jaxbXMLToObject();
@@ -31,7 +31,7 @@ public class Administrator {
     public void manipulate(){
         try {
             int i=0;
-            //if (@auth.isLogged() || login()){   //grade 3 irrelevant for now
+            if(auth.isLogged() || login())
             while(i!=1){
                 int command = myConsole.userSelection();
                 if(command ==0){
@@ -60,8 +60,10 @@ public class Administrator {
                     i++;
                     myConsole.exitDisplay();
                 }
-            }
+            }else{
 
+
+            }
 
         }catch (InputMismatchException e){
             myConsole.displayErrorMessage("Input Mismatch! System Exit");
@@ -160,14 +162,14 @@ public class Administrator {
         return m;
     }
 
-    /*  private boolean login(){
+    private boolean login(){
         myConsole.showAuthentication();
         String username = myConsole.authenticateUsername();
         String password = myConsole.authenticatePassword();
         if (auth.authenticate(username, password)) myConsole.showSuccessfulLogin();
         else myConsole.showInvalidLogin();
         return auth.isLogged();
-    }*/
+
 
     public static boolean isValidMember(Member man) {
         if(man==null)

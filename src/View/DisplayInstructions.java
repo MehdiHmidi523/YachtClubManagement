@@ -42,7 +42,7 @@ public interface DisplayInstructions {
     void displayErrorMessage(String str);
     void endSearch();
 
-   /* void showAuthentication();
+   void showAuthentication();
 
     String authenticateUsername();
 
@@ -51,5 +51,5 @@ public interface DisplayInstructions {
     void showSuccessfulLogin();
 
     void showInvalidLogin();
-    */
+
 }
