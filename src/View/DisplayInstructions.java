@@ -52,4 +52,6 @@ public interface DisplayInstructions {
 
     void showInvalidLogin();
 
+    // will be attempted in grade 4.
+    boolean proceed();
 }

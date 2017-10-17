@@ -436,13 +436,14 @@ sc1.close();
        displayErrorMessage(" Wrong username or password -----");
     }
 
-/* // will be attempted in grade 4.
+// will be attempted in grade 4.
     @Override
     public boolean proceed() {
             System.out.println("Press a character to continue or 'q' to quit");
-            return (Character.compare(getInput(Validate.ValidationType.String).charAt(0), 'q') != 0);
+            String inst = sc.nextLine();
+            return (Character.compare(inst.charAt(0), 'q') != 0);
     }
-*/
+
 
     /************************ Personal Number Helper Methods ***************************/
     private static String getFirstPart(String swedId){

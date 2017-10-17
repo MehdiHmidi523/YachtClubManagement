@@ -32,7 +32,7 @@ public class Administrator {
         try {
             int i=0;
             if(auth.isLogged() || login())
-            while(i!=1){
+            do{
                 int command = myConsole.userSelection();
                 if(command ==0){
                     myConsole.exitDisplay();
@@ -60,7 +60,8 @@ public class Administrator {
                     i++;
                     myConsole.exitDisplay();
                 }
-            }else{
+            }while(i!=1 && myConsole.proceed());
+            else{
 
 
             }
@@ -169,6 +170,7 @@ public class Administrator {
         if (auth.authenticate(username, password)) myConsole.showSuccessfulLogin();
         else myConsole.showInvalidLogin();
         return auth.isLogged();
+    }
 
 
     public static boolean isValidMember(Member man) {

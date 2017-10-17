@@ -10,15 +10,15 @@ public class Authenticate {
     private boolean logged = false;
 
     public boolean authenticate(String username, String password){
-        if (username.equals(username) && password.equals(password)){
-            setLogged(true);
+        if (Authenticate.username.equals(username) && Authenticate.password.equals(password)){
+            setLogged();
             return true;
         }
         else return false;
     }
 
-    private void setLogged(boolean logged) {
-        this.logged = logged;
+    private void setLogged() {
+        this.logged = true;
     }
 
     public boolean isLogged() {
