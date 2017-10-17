@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Berths;
 import Model.Boat;
 import Model.Member;
 import Model.MemberRegistry;
@@ -21,11 +22,13 @@ public class Administrator {
         String
     }
     private MemberRegistry Registry;
+    private Berths berths;
     private DisplayInstructions myConsole;
     private Authenticate auth = new Authenticate();
     public Administrator(DisplayInstructions myView){ //initialize()
         setMyDisplay(myView);
         Registry = TechnicalServices.Persistence.MembersDAO.jaxbXMLToObject();
+        berths = TechnicalServices.Persistence.BoatsDAO.jaxbXMLToObject();
     }
 
     public void manipulate(){
@@ -71,6 +74,7 @@ public class Administrator {
             myConsole.exitDisplay();
         }
         TechnicalServices.Persistence.MembersDAO.jaxbObjectToXML(Registry);
+        TechnicalServices.Persistence.BoatsDAO.jaxbObjectToXML(berths);
     }
 
     /*
