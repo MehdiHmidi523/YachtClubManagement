@@ -36,7 +36,7 @@ public interface DisplayInstructions {
 
     Member displayCreateMember();
     Boat displayAddBoat(Member nw);
-    void displayShowBoats(ArrayList<Boat> members);
+    void displayShowBoats(ArrayList<Member> members);
 
     void displaySuccessOperation(String str);
     void displayErrorMessage(String str);

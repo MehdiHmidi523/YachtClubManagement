@@ -380,11 +380,11 @@ sc1.close();
     }
 
     @Override
-    public void displayShowBoats(ArrayList<Boat> members) {
+    public void displayShowBoats(ArrayList<Member> members) {
         if(members.size()!=0){
-            for (Boat m : members){
-                System.out.print(" //Owner: "+ m.getMember().getM_name());
-                DisplayMemberBoatInfo(m.getMember());
+            for (Member m : members){
+                System.out.print(" //Owner: "+ m.getM_name());
+                DisplayMemberBoatInfo(m);
             }
         }else
             displayErrorMessage("The Yacht Club has no members!");
@@ -418,12 +418,22 @@ sc1.close();
 
     @Override
     public String authenticateUsername() {
-        return null;
+        System.out.println("********* Input Member Name (admin for now) *********");
+        String str="";
+        while (str.isEmpty() && sc.hasNext()){
+            str = sc.nextLine();
+        }
+        return str;
     }
 
     @Override
     public String authenticatePassword() {
-    return null;
+        System.out.println("********* Input Member Password (admin for now) *********");
+        String str="";
+        while (str.isEmpty() && sc.hasNext()){
+            str = sc.nextLine();
+        }
+        return str;
     }
 
     @Override

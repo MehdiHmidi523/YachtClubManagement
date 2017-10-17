@@ -1,6 +1,5 @@
 package Controller;
 
-import Model.Berths;
 import Model.Boat;
 import Model.Member;
 import Model.MemberRegistry;
@@ -22,13 +21,11 @@ public class Administrator {
         String
     }
     private MemberRegistry Registry;
-    private Berths berths;
     private DisplayInstructions myConsole;
     private Authenticate auth = new Authenticate();
     public Administrator(DisplayInstructions myView){ //initialize()
         setMyDisplay(myView);
         Registry = TechnicalServices.Persistence.MembersDAO.jaxbXMLToObject();
-        berths = TechnicalServices.Persistence.BoatsDAO.jaxbXMLToObject();
     }
 
     public void manipulate(){
@@ -38,13 +35,11 @@ public class Administrator {
                 int command = myConsole.userSelection();
                 if(command ==0){
                     myConsole.exitDisplay();
-                    System.exit(-1); //End of Session
-                    TechnicalServices.Persistence.MembersDAO.jaxbObjectToXML(Registry);
                 }
                 else if(command ==1){//Type of list, handled in the view attempted high cohesion.
                     myConsole.showMemberRegistry(Registry.getMemberList());
                 }else if (command ==2){// Show Current Berth allocations.
-                    myConsole.displayShowBoats(berths.getBoatList());
+                    myConsole.displayShowBoats(Registry.getMemberList());
                 }else if (command ==3){//Create a new member.
                     if (auth.isLogged() || login()){
                         createMember();
@@ -75,7 +70,6 @@ public class Administrator {
         }
         myConsole.displaySuccessOperation("Saved Session!");
         TechnicalServices.Persistence.MembersDAO.jaxbObjectToXML(Registry);
-        TechnicalServices.Persistence.BoatsDAO.jaxbObjectToXML(berths);
     }
 
     /*
