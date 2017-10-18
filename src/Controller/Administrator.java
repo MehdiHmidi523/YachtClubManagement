@@ -173,16 +173,10 @@ public class Administrator {
 
 
     public static boolean isValidMember(Member man) {
-        if(man==null)
-            return false;
-        else
-            return man.getM_name() != null && man.getM_personal_number() != null && man.getM_boats()!= null && man.getM_numOfBoats() != 0;
+        return man != null && man.getM_name() != null && man.getM_personal_number() != null && man.getM_boats() != null && man.getM_numOfBoats() != 0;
     }
 
-    public static boolean isValidBoat(Boat machine){
-        if(machine==null)
-            return false;
-        else
-            return machine.getB_Name() != null && machine.getLength() != 0 && machine.getType() !=null;
+    public static boolean isValidBoat(Boat machine) {
+        return machine != null && machine.getB_Name() != null && machine.getLength() != 0 && machine.getType() != null;
     }
 }

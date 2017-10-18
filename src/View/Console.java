@@ -1,5 +1,6 @@
 package View;
 
+import Controller.Administrator;
 import Model.Boat;
 import Model.Member;
 import Model.MemberRegistry;
@@ -220,7 +221,7 @@ sc1.close();
     }
 
     @Override
-    public int getInterestID() { //TODO: VALIDATION TYPE INTEGER blocks of code like these are scattered around put them in the technical services package
+    public int getInterestID() {
         System.out.println("********* Input Member id >0 *********");
         try{
            int myId;
@@ -246,32 +247,13 @@ sc1.close();
 
     @Override
     public String getInterestNr() {
-        String swedId="";
+        String swedId;
         System.out.println("********* Input Member's Personal Number *********");
         do{
             swedId= sc.nextLine();
-        }while(swedId.length()>=10);
+        }while(swedId.length()>=10 && isCorrect(swedId, getFirstPart(swedId), getSecondPart(swedId)));
         return swedId;
     }
-    /*@Override
-    public Member displayEditMember(Member my) {
-        System.out.println("-----------Select Member Info to EDIT ! -----------");
-        System.out.println("0.) Exit");
-        System.out.println("1.) Name");
-        System.out.println("2.) Personal Number");
-        System.out.println("3.) Boat");
-
-        if(getChoice(0,3)==1){
-            editMemberName(my); // put member in brackets.
-            return myList.getMemberList().get(getInterestID()-1);
-        }else if(getChoice(0,3)==2){
-            editMemberPersonalNumber(my);
-        }else if(getChoice(0,3)==3){
-            editBoat(my);
-        }else
-            System.out.println(" Exit Search !");
-        return null;
-    }*/
 
     @Override
     public Member displayDeleteMember(MemberRegistry myList) {
@@ -453,7 +435,6 @@ sc1.close();
             String inst = sc.nextLine();
             return (Character.compare(inst.charAt(0), 'q') != 0);
     }
-
 
     /************************ Personal Number Helper Methods ***************************/
     private static String getFirstPart(String swedId){
