@@ -1,5 +1,6 @@
 package View;
 
+import Controller.Administrator;
 import Model.Boat;
 import Model.Member;
 import Model.MemberRegistry;
@@ -53,4 +54,12 @@ public interface DisplayInstructions {
     void showInvalidLogin();
 
     boolean proceed();
+
+    int selectSearch();
+
+    String getSearchParam(Administrator.ValidationType t);
+
+    int selectMonth();
+
+    int selectBoatsType();
 }

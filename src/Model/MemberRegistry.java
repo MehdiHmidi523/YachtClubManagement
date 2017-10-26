@@ -54,6 +54,15 @@ public class MemberRegistry {
         }
     }
 
+    public boolean containsMember(int id){
+        for (Member m : memberList) {
+            if (m.getM_Id() == id){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public int getM_count() {
         return memberList.size();
     }

@@ -36,7 +36,8 @@ public class Console implements DisplayInstructions {
         System.out.println("3.) Create a new member");
         System.out.println("4.) Edit a members/boats information");
         System.out.println("5.) Delete a Member");
-        return getChoice(0,5);
+        System.out.println("6.) Search members");
+        return getChoice(0,6);
     }
 
     @Override
@@ -206,7 +207,7 @@ public class Console implements DisplayInstructions {
         String personal_number = sc1.nextLine();
         editMember.setM_personal_number(personal_number);
         displaySuccessOperation("***** CHANGED PERSONAL-NUMBER *****");
-sc1.close();
+        sc1.close();
     }
 
     @Override
@@ -434,6 +435,53 @@ sc1.close();
             System.out.println("Press a character to continue or 'q' to quit");
             String inst = sc.nextLine();
             return (Character.compare(inst.charAt(0), 'q') != 0);
+    }
+
+    @Override
+    public int selectSearch() {
+        System.out.println("----------- Search -----------");
+        System.out.println("1.) By name prefix");
+        System.out.println("2.) By minimum age");
+        System.out.println("3.) By birth-month");
+        System.out.println("4.) By Boatstype");
+        System.out.println("5.) NestedSearch: (month||(name & minimumAge))");
+        return getChoice(1,5);
+    }
+
+    @Override
+    public String getSearchParam(Administrator.ValidationType t) {
+        System.out.println("Please enter search-argument:");
+        String str="";
+        while (str.isEmpty() && sc.hasNext()){
+            str = sc.nextLine();
+        }
+        return str;
+    }
+
+    public int selectBoatsType(){
+        System.out.println("----------- Select Boatstype -----------");
+        for (int i = 0; i< Boat.Boatstype.values().length; i++ ){
+            System.out.println("\t" + i + ".) " + Boat.Boatstype.values()[i]);
+        }
+        return getChoice(0, Boat.Boatstype.values().length-1);
+
+    }
+
+    public int selectMonth(){
+        System.out.println("----------- Select Month -----------");
+        System.out.println("1.) January");
+        System.out.println("2.) February");
+        System.out.println("3.) March");
+        System.out.println("4.) April");
+        System.out.println("5.) May");
+        System.out.println("6.) June");
+        System.out.println("7.) July");
+        System.out.println("8.) August");
+        System.out.println("9.) September");
+        System.out.println("10.) October");
+        System.out.println("11.) November");
+        System.out.println("12.) December");
+        return getChoice(1,12);
     }
 
     /************************ Personal Number Helper Methods ***************************/

@@ -4,6 +4,7 @@ import Model.Boat;
 import Model.Member;
 import Model.MemberRegistry;
 import TechnicalServices.Logging.Authenticate;
+import TechnicalServices.Search.*;
 import View.DisplayInstructions;
 
 import java.util.InputMismatchException;
@@ -57,6 +58,14 @@ public class Administrator {
                             deleteMember();
                         else
                             myConsole.displayErrorMessage("Registry is Empty");
+                    }
+
+                } else if(command ==6){
+                    MemberRegistry search_result = searchMembers();
+                    myConsole.showMemberRegistry(Registry.getMemberList());
+                    if (search_result.getMemberList().iterator().hasNext()){
+                        Member id = selectMember(Registry);
+                        myConsole.showMemberInformation(id);
                     }
                 }else{
                     myConsole.displayErrorMessage("Comply with Instructions!");
@@ -169,6 +178,44 @@ public class Administrator {
         if (auth.authenticate(username, password)) myConsole.showSuccessfulLogin();
         else myConsole.showInvalidLogin();
         return auth.isLogged();
+    }
+
+    private MemberRegistry searchMembers(){
+        int i = myConsole.selectSearch();
+        MemberRegistry search_list = new MemberRegistry();
+
+        switch (i){
+            case 1: {
+                SearchCriteria byName = new NamePrefixCriteria(myConsole.getSearchParam(ValidationType.String));
+                search_list = byName.meetCriteria(Registry);
+            }
+            break;
+            case 2: {
+                SearchCriteria byAge = new MinimumAgeCriteria(Integer.parseInt(myConsole.getSearchParam(ValidationType.Integer)));
+                search_list = byAge.meetCriteria(Registry);
+            }
+            break;
+            case 3:	{
+                SearchCriteria byBirthMonth = new BirthMonthCriteria(myConsole.selectMonth());
+                search_list = byBirthMonth.meetCriteria(Registry);
+                break;
+            }
+            case 4: {
+                SearchCriteria byBoatsType = new BoatsTypeCriteria(Boat.Boatstype.values()[myConsole.selectBoatsType()]);
+                search_list = byBoatsType.meetCriteria(Registry);
+                break;
+            }
+            case 5: {     	// (month||(name & minimumAge)
+                SearchCriteria byBirthMonth = new BirthMonthCriteria(myConsole.selectMonth());
+                SearchCriteria byName = new NamePrefixCriteria(myConsole.getSearchParam(ValidationType.String));
+                SearchCriteria byAge = new MinimumAgeCriteria(Integer.parseInt(myConsole.getSearchParam(ValidationType.Integer)));
+                SearchCriteria byNameAndAge = new AndCriteria(byName,byAge);
+                SearchCriteria byBirthMonthOrNestedNameAndAge = new OrCriteria(byBirthMonth, byNameAndAge);
+                search_list = byBirthMonthOrNestedNameAndAge.meetCriteria(Registry);
+            }
+        }
+
+        return search_list;
     }
 
 
