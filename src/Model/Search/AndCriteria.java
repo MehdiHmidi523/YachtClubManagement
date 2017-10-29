@@ -1,4 +1,4 @@
-package TechnicalServices.Search;
+package Model.Search;
 
 import Model.MemberRegistry;
 

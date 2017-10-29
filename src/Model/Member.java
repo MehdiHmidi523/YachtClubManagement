@@ -46,7 +46,13 @@ public class Member {
     public ArrayList<Boat> getM_boats(){
         return boats;
     }
-    public void setM_boats(){ }
+    public Boat getBoat(int b_id){
+        for (int i=0;i<boats.size();i++){
+            if (boats.get(i).getB_id() == b_id)
+                return boats.get(i);
+        }
+        return null;
+    }
 
     public boolean addBoat(Boat myBoat){
         if(isValidBoat(myBoat)){
@@ -55,11 +61,6 @@ public class Member {
             return true;
         }else
         return false;
-    }
-
-    public void deleteBoat(Boat myBoat){
-        if (!boats.remove(myBoat))
-            System.err.println("Boat not found!");
     }
 
 }

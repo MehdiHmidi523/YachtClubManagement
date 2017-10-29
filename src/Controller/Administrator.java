@@ -3,24 +3,14 @@ package Controller;
 import Model.Boat;
 import Model.Member;
 import Model.MemberRegistry;
-import TechnicalServices.Logging.Authenticate;
-import TechnicalServices.Search.*;
+import Model.Authenticate;
+import Model.Search.*;
 import View.DisplayInstructions;
 
 import java.util.InputMismatchException;
 
-/**
- * Created by Void on 28/09/2017 for the YachtClubManagement project.
- */
 public class Administrator {
 
-    public enum ValidationType {   // for grade 3 & 4 this is irrelevant at this moment.
-        SwedishID,
-        PositiveDouble,
-        Character,
-        Integer,
-        String
-    }
     private MemberRegistry Registry;
     private DisplayInstructions myConsole;
     private Authenticate auth = new Authenticate();
@@ -59,7 +49,6 @@ public class Administrator {
                         else
                             myConsole.displayErrorMessage("Registry is Empty");
                     }
-
                 } else if(command ==6){
                     MemberRegistry search_result = searchMembers();
                     myConsole.showMemberRegistry(Registry.getMemberList());
@@ -99,8 +88,7 @@ public class Administrator {
         int b=nw.getM_numOfBoats();
         for(int i=0;i<b;i++){
             Boat b1 = (myConsole.displayAddBoat(nw));
-            if(isValidBoat(b1)){
-                nw.addBoat(b1);
+            if(isValidBoat(b1)&& nw.addBoat(b1)){
                 myConsole.displaySuccessOperation("Added Boat");
             }
             else{
@@ -121,8 +109,10 @@ public class Administrator {
         else{
             myConsole.showMemberInformation(my);
             Member del = myConsole.displayDeleteMember(Registry);
-            Registry.deleteMember(del.getM_Id());// then show member info and delete him after confirmation!!!
-            myConsole.displaySuccessOperation("Deleted Member");
+            if(Registry.deleteMember(del.getM_Id()))// then show member info and delete him after confirmation!!!
+                myConsole.displaySuccessOperation("Deleted Member");
+            else
+                myConsole.displayErrorMessage("MEMBER NOT FOUND!");
         }
     }
 
@@ -157,8 +147,6 @@ public class Administrator {
         } else if (choice==2){
             String str= myConsole.getInterestName();
             m = myList.nameMember(str);
-
-
         } else if(choice==3) {
             String pnum = myConsole.getInterestNr();
             if(!pnum.equals("")){
@@ -186,12 +174,12 @@ public class Administrator {
 
         switch (i){
             case 1: {
-                SearchCriteria byName = new NamePrefixCriteria(myConsole.getSearchParam(ValidationType.String));
+                SearchCriteria byName = new NamePrefixCriteria(myConsole.getInterestName());
                 search_list = byName.meetCriteria(Registry);
             }
             break;
             case 2: {
-                SearchCriteria byAge = new MinimumAgeCriteria(Integer.parseInt(myConsole.getSearchParam(ValidationType.Integer)));
+                SearchCriteria byAge = new MinimumAgeCriteria(myConsole.getInteresAge());
                 search_list = byAge.meetCriteria(Registry);
             }
             break;
@@ -207,20 +195,19 @@ public class Administrator {
             }
             case 5: {     	// (month||(name & minimumAge)
                 SearchCriteria byBirthMonth = new BirthMonthCriteria(myConsole.selectMonth());
-                SearchCriteria byName = new NamePrefixCriteria(myConsole.getSearchParam(ValidationType.String));
-                SearchCriteria byAge = new MinimumAgeCriteria(Integer.parseInt(myConsole.getSearchParam(ValidationType.Integer)));
+                SearchCriteria byName = new NamePrefixCriteria(myConsole.getInterestName());
+                SearchCriteria byAge = new MinimumAgeCriteria(Integer.parseInt(myConsole.getInteresAge()));
                 SearchCriteria byNameAndAge = new AndCriteria(byName,byAge);
                 SearchCriteria byBirthMonthOrNestedNameAndAge = new OrCriteria(byBirthMonth, byNameAndAge);
                 search_list = byBirthMonthOrNestedNameAndAge.meetCriteria(Registry);
             }
         }
-
         return search_list;
     }
 
 
     public static boolean isValidMember(Member man) {
-        return man != null && man.getM_name() != null && man.getM_personal_number() != null && man.getM_boats() != null && man.getM_numOfBoats() != 0;
+        return man != null && man.getM_name() != null && man.getM_personal_number() != null  && man.getM_numOfBoats() != 0;
     }
 
     public static boolean isValidBoat(Boat machine) {

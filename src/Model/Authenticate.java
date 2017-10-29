@@ -1,4 +1,4 @@
-package TechnicalServices.Logging;
+package Model;
 
 /**
  * Created by Void on 12/10/2017 for the YachtClubManagement project.

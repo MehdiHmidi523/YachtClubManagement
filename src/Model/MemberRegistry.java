@@ -40,11 +40,10 @@ public class MemberRegistry {
             return false;
     }
 
-    public void deleteMember(int member_id){
-        int ne = member_id;
-        if (!memberList.remove(memberList.get((ne-1))))
-            System.err.println("Member not found!");
-        updateId(ne); //verbatim
+    public boolean deleteMember(int member_id){
+        if (!memberList.remove(memberList.get((member_id -1))))return false;
+        else updateId(member_id); //verbatim
+        return true;
     }
 
     private void updateId(int n) {

@@ -2,16 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="83edfc7e-ba75-44dd-9758-0184f8511ba7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grade 3 and 4 W2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/TechnicalServices/Search/AndCriteria.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/TechnicalServices/Search/BirthMonthCriteria.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/TechnicalServices/Search/BoatsTypeCriteria.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/TechnicalServices/Search/MinimumAgeCriteria.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/TechnicalServices/Search/NamePrefixCriteria.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/TechnicalServices/Search/OrCriteria.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/TechnicalServices/Search/SearchCriteria.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/TechnicalServices/Logging/Authenticate.java" afterPath="$PROJECT_DIR$/src/Model/Authenticate.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/TechnicalServices/Search/AndCriteria.java" afterPath="$PROJECT_DIR$/src/Model/Search/AndCriteria.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/TechnicalServices/Search/BirthMonthCriteria.java" afterPath="$PROJECT_DIR$/src/Model/Search/BirthMonthCriteria.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/TechnicalServices/Search/BoatsTypeCriteria.java" afterPath="$PROJECT_DIR$/src/Model/Search/BoatsTypeCriteria.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/TechnicalServices/Search/MinimumAgeCriteria.java" afterPath="$PROJECT_DIR$/src/Model/Search/MinimumAgeCriteria.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/TechnicalServices/Search/NamePrefixCriteria.java" afterPath="$PROJECT_DIR$/src/Model/Search/NamePrefixCriteria.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/TechnicalServices/Search/OrCriteria.java" afterPath="$PROJECT_DIR$/src/Model/Search/OrCriteria.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/TechnicalServices/Search/SearchCriteria.java" afterPath="$PROJECT_DIR$/src/Model/Search/SearchCriteria.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/Administrator.java" afterPath="$PROJECT_DIR$/src/Controller/Administrator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/Member.java" afterPath="$PROJECT_DIR$/src/Model/Member.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Model/MemberRegistry.java" afterPath="$PROJECT_DIR$/src/Model/MemberRegistry.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/Console.java" afterPath="$PROJECT_DIR$/src/View/Console.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/View/DisplayInstructions.java" afterPath="$PROJECT_DIR$/src/View/DisplayInstructions.java" />
@@ -24,7 +26,111 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Administrator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/Administrator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="199">
+              <caret line="193" column="22" lean-forward="true" selection-start-line="193" selection-start-column="22" selection-end-line="193" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="11" lean-forward="true" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Console.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/View/Console.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="302" column="5" lean-forward="true" selection-start-line="302" selection-start-column="5" selection-end-line="302" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#showWelcomeMessage#0;class#Console#0" expanded="false" />
+                <element signature="method#userSelection#0;class#Console#0" expanded="false" />
+                <element signature="method#showMemberRegistry#0;class#Console#0" expanded="false" />
+                <element signature="method#displayCreateMember#0;class#Console#0" expanded="false" />
+                <element signature="method#displayAddBoat#0;class#Console#0" expanded="false" />
+                <element signature="method#editMemberName#0;class#Console#0" expanded="false" />
+                <element signature="method#editBoat#0;class#Console#0" expanded="false" />
+                <element signature="method#editMemberPersonalNumber#0;class#Console#0" expanded="false" />
+                <element signature="method#displayEditMember#0;class#Console#0" expanded="false" />
+                <element signature="method#displayDeleteMember#0;class#Console#0" expanded="false" />
+                <element signature="method#displayDeleteBoat#0;class#Console#0" expanded="false" />
+                <element signature="method#displaySuccessOperation#0;class#Console#0" expanded="false" />
+                <element signature="method#exitDisplay#0;class#Console#0" expanded="false" />
+                <element signature="method#proceed#0;class#Console#0" expanded="false" />
+                <element signature="method#endSearch#0;class#Console#0" expanded="false" />
+                <element signature="method#showAuthentication#0;class#Console#0" expanded="false" />
+                <element signature="method#authenticateUsername#0;class#Console#0" expanded="false" />
+                <element signature="method#authenticatePassword#0;class#Console#0" expanded="false" />
+                <element signature="method#selectMember#0;class#Console#0" expanded="false" />
+                <element signature="method#selectBoatsType#0;class#Console#0" expanded="false" />
+                <element signature="method#selectMonth#0;class#Console#0" expanded="false" />
+                <element signature="method#selectListType#0;class#Console#0" expanded="false" />
+                <element signature="method#showCompactList#0;class#Console#0" expanded="false" />
+                <element signature="method#showVerboseList#0;class#Console#0" expanded="false" />
+                <element signature="method#displayShowBoats#0;class#Console#0" expanded="false" />
+                <element signature="method#showMemberInformation#0;class#Console#0" expanded="false" />
+                <element signature="method#DisplayMemberBoatInfo#0;class#Console#0" expanded="false" />
+                <element signature="method#getChoice#0;class#Console#0" expanded="false" />
+                <element signature="method#getInterestID#0;class#Console#0" expanded="false" />
+                <element signature="method#getInterestName#0;class#Console#0" expanded="false" />
+                <element signature="method#getInterestNr#0;class#Console#0" expanded="false" />
+                <element signature="method#isCorrect#0;class#Console#0" expanded="false" />
+                <element signature="method#checksum#0;class#Console#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Member.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/Member.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="53" column="20" lean-forward="true" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
+              <folding>
+                <element signature="e#1074#1075#0" expanded="true" />
+                <element signature="e#1102#1103#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Boat.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/Boat.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+              <folding>
+                <element signature="e#219#220#0" expanded="true" />
+                <element signature="e#243#244#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DisplayInstructions.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/View/DisplayInstructions.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="284">
+              <caret line="30" column="24" lean-forward="true" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -40,6 +146,10 @@
       <find>authen</find>
       <find>while</find>
       <find>showMem</find>
+      <find>Display</find>
+      <find>(MemberR</find>
+      <find>return b</find>
+      <find>selectB</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -53,10 +163,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/TechnicalServices/Persistence/Berths.java" />
         <option value="$PROJECT_DIR$/src/Model/Boat.java" />
-        <option value="$PROJECT_DIR$/src/Model/Member.java" />
         <option value="$PROJECT_DIR$/src/Model/Berths.java" />
         <option value="$PROJECT_DIR$/src/TechnicalServices/Persistence/BoatsDAO.java" />
         <option value="$PROJECT_DIR$/src/TechnicalServices/Logging/Authenticate.java" />
@@ -69,12 +177,15 @@
         <option value="$PROJECT_DIR$/src/TechnicalServices/Search/NamePrefixCriteria.java" />
         <option value="$PROJECT_DIR$/src/TechnicalServices/Search/ByMinimumAgeCriteria.java" />
         <option value="$PROJECT_DIR$/src/TechnicalServices/Search/MinimumAgeCriteria.java" />
-        <option value="$PROJECT_DIR$/src/View/DisplayInstructions.java" />
-        <option value="$PROJECT_DIR$/src/Model/MemberRegistry.java" />
-        <option value="$PROJECT_DIR$/src/Controller/Administrator.java" />
-        <option value="$PROJECT_DIR$/src/View/Console.java" />
         <option value="$PROJECT_DIR$/src/TechnicalServices/Search/OrCriteria.java" />
         <option value="$PROJECT_DIR$/src/TechnicalServices/Search/AndCriteria.java" />
+        <option value="$PROJECT_DIR$/src/Model/MemberRegistry.java" />
+        <option value="$PROJECT_DIR$/src/Model/Authenticate.java" />
+        <option value="$PROJECT_DIR$/src/Model/Member.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/Controller/Administrator.java" />
+        <option value="$PROJECT_DIR$/src/View/DisplayInstructions.java" />
+        <option value="$PROJECT_DIR$/src/View/Console.java" />
       </list>
     </option>
   </component>
@@ -85,9 +196,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="734" />
-    <option name="height" value="860" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1456" />
+    <option name="height" value="876" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -105,7 +217,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -122,40 +235,20 @@
               <item name="YachtClubManagement" type="b2602c69:ProjectViewProjectNode" />
               <item name="YachtClubManagement" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="YachtClubManagement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="YachtClubManagement" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="YachtClubManagement" type="b2602c69:ProjectViewProjectNode" />
               <item name="YachtClubManagement" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="TechnicalServices" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="YachtClubManagement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="YachtClubManagement" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="TechnicalServices" type="462c0819:PsiDirectoryNode" />
-              <item name="Logging" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="YachtClubManagement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="YachtClubManagement" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="TechnicalServices" type="462c0819:PsiDirectoryNode" />
-              <item name="Persistence" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="YachtClubManagement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="YachtClubManagement" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="TechnicalServices" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
               <item name="Search" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="YachtClubManagement" type="b2602c69:ProjectViewProjectNode" />
+              <item name="YachtClubManagement" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Persistence" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="YachtClubManagement" type="b2602c69:ProjectViewProjectNode" />
@@ -167,8 +260,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -312,14 +404,17 @@
       <workItem from="1508247012995" duration="1734000" />
       <workItem from="1508961820161" duration="3822000" />
       <workItem from="1509007254284" duration="244000" />
+      <workItem from="1509179849158" duration="2591000" />
+      <workItem from="1509183668855" duration="9066000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14801000" />
+    <option name="totallyTimeSpent" value="27053000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -333,8 +428,9 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26432666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20916906" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968536" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -347,7 +443,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -387,23 +482,113 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="7" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Model/Search/BirthMonthCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Search/BoatsTypeCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Search/MinimumAgeCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="30" column="14" lean-forward="true" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Search/NamePrefixCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="23" lean-forward="false" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Search/OrCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Search/AndCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Authenticate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="11" column="26" lean-forward="false" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Member.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding>
+            <element signature="e#1074#1075#0" expanded="true" />
+            <element signature="e#1102#1103#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/MemberRegistry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="43" column="87" lean-forward="true" selection-start-line="43" selection-start-column="87" selection-end-line="43" selection-end-column="87" />
+          <folding>
+            <element signature="method#updateId#0;class#MemberRegistry#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/Administrator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1989">
           <caret line="202" column="21" lean-forward="false" selection-start-line="202" selection-start-column="21" selection-end-line="202" selection-end-column="21" />
-          <folding>
-            <element signature="method#createMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#addBoatsToMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#deleteMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#editMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#selectMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#login#0;class#Administrator#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -411,7 +596,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="952">
           <caret line="56" column="22" lean-forward="false" selection-start-line="56" selection-start-column="22" selection-end-line="56" selection-end-column="22" />
-          <folding />
+          <folding>
+            <element signature="method#updateId#0;class#MemberRegistry#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -420,17 +607,40 @@
         <state relative-caret-position="7565">
           <caret line="445" column="36" lean-forward="false" selection-start-line="445" selection-start-column="36" selection-end-line="445" selection-end-column="36" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#showWelcomeMessage#0;class#Console#0" expanded="false" />
-            <element signature="method#exitDisplay#0;class#Console#0" expanded="false" />
+            <element signature="method#userSelection#0;class#Console#0" expanded="false" />
             <element signature="method#showMemberRegistry#0;class#Console#0" expanded="false" />
+            <element signature="method#displayCreateMember#0;class#Console#0" expanded="false" />
+            <element signature="method#displayAddBoat#0;class#Console#0" expanded="false" />
+            <element signature="method#editMemberName#0;class#Console#0" expanded="false" />
+            <element signature="method#editBoat#0;class#Console#0" expanded="false" />
+            <element signature="method#editMemberPersonalNumber#0;class#Console#0" expanded="false" />
+            <element signature="method#displayEditMember#0;class#Console#0" expanded="false" />
+            <element signature="method#displayDeleteMember#0;class#Console#0" expanded="false" />
+            <element signature="method#displayDeleteBoat#0;class#Console#0" expanded="false" />
+            <element signature="method#displaySuccessOperation#0;class#Console#0" expanded="false" />
+            <element signature="method#exitDisplay#0;class#Console#0" expanded="false" />
+            <element signature="method#proceed#0;class#Console#0" expanded="false" />
+            <element signature="method#endSearch#0;class#Console#0" expanded="false" />
+            <element signature="method#showAuthentication#0;class#Console#0" expanded="false" />
+            <element signature="method#authenticateUsername#0;class#Console#0" expanded="false" />
+            <element signature="method#authenticatePassword#0;class#Console#0" expanded="false" />
+            <element signature="method#selectMember#0;class#Console#0" expanded="false" />
+            <element signature="method#selectBoatsType#0;class#Console#0" expanded="false" />
+            <element signature="method#selectMonth#0;class#Console#0" expanded="false" />
             <element signature="method#selectListType#0;class#Console#0" expanded="false" />
             <element signature="method#showCompactList#0;class#Console#0" expanded="false" />
             <element signature="method#showVerboseList#0;class#Console#0" expanded="false" />
+            <element signature="method#displayShowBoats#0;class#Console#0" expanded="false" />
+            <element signature="method#showMemberInformation#0;class#Console#0" expanded="false" />
             <element signature="method#DisplayMemberBoatInfo#0;class#Console#0" expanded="false" />
             <element signature="method#getChoice#0;class#Console#0" expanded="false" />
-            <element signature="method#showMemberInformation#0;class#Console#0" expanded="false" />
-            <element signature="method#displayEditMember#0;class#Console#0" expanded="false" />
-            <element signature="method#editMemberName#0;class#Console#0" expanded="false" />
+            <element signature="method#getInterestID#0;class#Console#0" expanded="false" />
+            <element signature="method#getInterestName#0;class#Console#0" expanded="false" />
+            <element signature="method#getInterestNr#0;class#Console#0" expanded="false" />
+            <element signature="method#isCorrect#0;class#Console#0" expanded="false" />
+            <element signature="method#checksum#0;class#Console#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -439,18 +649,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="986">
           <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding>
-            <element signature="method#createMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#addBoatsToMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#deleteMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#editMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#selectMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#login#0;class#Administrator#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TechnicalServices/Logging/Authenticate.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/Authenticate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="24" lean-forward="true" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
@@ -462,7 +665,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="2" column="3" lean-forward="false" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -470,14 +675,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1224">
           <caret line="72" column="6" lean-forward="true" selection-start-line="72" selection-start-column="6" selection-end-line="72" selection-end-column="6" />
-          <folding>
-            <element signature="method#createMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#addBoatsToMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#deleteMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#editMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#selectMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#login#0;class#Administrator#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -485,7 +683,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="952">
           <caret line="56" column="21" lean-forward="true" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
-          <folding />
+          <folding>
+            <element signature="e#1074#1075#0" expanded="true" />
+            <element signature="e#1102#1103#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -493,7 +694,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="16" selection-end-column="37" />
-          <folding />
+          <folding>
+            <element signature="method#updateId#0;class#MemberRegistry#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -501,7 +704,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-          <folding />
+          <folding>
+            <element signature="e#219#220#0" expanded="true" />
+            <element signature="e#243#244#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -509,7 +715,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="13" column="4" lean-forward="false" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -526,7 +731,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -535,7 +742,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -545,17 +751,40 @@
         <state relative-caret-position="2686">
           <caret line="158" column="0" lean-forward="false" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#showWelcomeMessage#0;class#Console#0" expanded="false" />
-            <element signature="method#exitDisplay#0;class#Console#0" expanded="false" />
+            <element signature="method#userSelection#0;class#Console#0" expanded="false" />
             <element signature="method#showMemberRegistry#0;class#Console#0" expanded="false" />
+            <element signature="method#displayCreateMember#0;class#Console#0" expanded="false" />
+            <element signature="method#displayAddBoat#0;class#Console#0" expanded="false" />
+            <element signature="method#editMemberName#0;class#Console#0" expanded="false" />
+            <element signature="method#editBoat#0;class#Console#0" expanded="false" />
+            <element signature="method#editMemberPersonalNumber#0;class#Console#0" expanded="false" />
+            <element signature="method#displayEditMember#0;class#Console#0" expanded="false" />
+            <element signature="method#displayDeleteMember#0;class#Console#0" expanded="false" />
+            <element signature="method#displayDeleteBoat#0;class#Console#0" expanded="false" />
+            <element signature="method#displaySuccessOperation#0;class#Console#0" expanded="false" />
+            <element signature="method#exitDisplay#0;class#Console#0" expanded="false" />
+            <element signature="method#proceed#0;class#Console#0" expanded="false" />
+            <element signature="method#endSearch#0;class#Console#0" expanded="false" />
+            <element signature="method#showAuthentication#0;class#Console#0" expanded="false" />
+            <element signature="method#authenticateUsername#0;class#Console#0" expanded="false" />
+            <element signature="method#authenticatePassword#0;class#Console#0" expanded="false" />
+            <element signature="method#selectMember#0;class#Console#0" expanded="false" />
+            <element signature="method#selectBoatsType#0;class#Console#0" expanded="false" />
+            <element signature="method#selectMonth#0;class#Console#0" expanded="false" />
             <element signature="method#selectListType#0;class#Console#0" expanded="false" />
             <element signature="method#showCompactList#0;class#Console#0" expanded="false" />
             <element signature="method#showVerboseList#0;class#Console#0" expanded="false" />
+            <element signature="method#displayShowBoats#0;class#Console#0" expanded="false" />
+            <element signature="method#showMemberInformation#0;class#Console#0" expanded="false" />
             <element signature="method#DisplayMemberBoatInfo#0;class#Console#0" expanded="false" />
             <element signature="method#getChoice#0;class#Console#0" expanded="false" />
-            <element signature="method#showMemberInformation#0;class#Console#0" expanded="false" />
-            <element signature="method#displayEditMember#0;class#Console#0" expanded="false" />
-            <element signature="method#editMemberName#0;class#Console#0" expanded="false" />
+            <element signature="method#getInterestID#0;class#Console#0" expanded="false" />
+            <element signature="method#getInterestName#0;class#Console#0" expanded="false" />
+            <element signature="method#getInterestNr#0;class#Console#0" expanded="false" />
+            <element signature="method#isCorrect#0;class#Console#0" expanded="false" />
+            <element signature="method#checksum#0;class#Console#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -572,14 +801,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1207">
           <caret line="71" column="75" lean-forward="false" selection-start-line="71" selection-start-column="75" selection-end-line="71" selection-end-column="75" />
-          <folding>
-            <element signature="method#createMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#addBoatsToMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#deleteMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#editMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#selectMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#login#0;class#Administrator#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -589,36 +811,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Berths.java" />
-    <entry file="file://$PROJECT_DIR$/src/Model/Member.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="56" column="21" lean-forward="false" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Boat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="2" column="3" lean-forward="false" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TechnicalServices/Persistence/BoatsDAO.java" />
-    <entry file="file://$PROJECT_DIR$/src/TechnicalServices/Search/SearchCriteria.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/Search/SearchCriteria.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -626,35 +823,63 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="13" column="4" lean-forward="false" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/DisplayInstructions.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/Search/BirthMonthCriteria.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/Console.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5474">
-          <caret line="445" column="36" lean-forward="false" selection-start-line="445" selection-start-column="36" selection-end-line="445" selection-end-column="36" />
+        <state relative-caret-position="85">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
-            <element signature="method#showWelcomeMessage#0;class#Console#0" expanded="false" />
-            <element signature="method#exitDisplay#0;class#Console#0" expanded="false" />
-            <element signature="method#showMemberRegistry#0;class#Console#0" expanded="false" />
-            <element signature="method#selectListType#0;class#Console#0" expanded="false" />
-            <element signature="method#showCompactList#0;class#Console#0" expanded="false" />
-            <element signature="method#showVerboseList#0;class#Console#0" expanded="false" />
-            <element signature="method#DisplayMemberBoatInfo#0;class#Console#0" expanded="false" />
-            <element signature="method#getChoice#0;class#Console#0" expanded="false" />
-            <element signature="method#showMemberInformation#0;class#Console#0" expanded="false" />
-            <element signature="method#displayEditMember#0;class#Console#0" expanded="false" />
-            <element signature="method#editMemberName#0;class#Console#0" expanded="false" />
+            <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Search/BoatsTypeCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Search/MinimumAgeCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="30" column="14" lean-forward="true" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Search/NamePrefixCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="23" lean-forward="false" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Search/OrCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Search/AndCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -663,92 +888,147 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Administrator.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/MemberRegistry.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="202" column="21" lean-forward="false" selection-start-line="202" selection-start-column="21" selection-end-line="202" selection-end-column="21" />
+        <state relative-caret-position="148">
+          <caret line="40" column="5" lean-forward="true" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
           <folding>
-            <element signature="method#createMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#addBoatsToMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#deleteMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#editMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#selectMember#0;class#Administrator#0" expanded="false" />
-            <element signature="method#login#0;class#Administrator#0" expanded="false" />
+            <element signature="method#updateId#0;class#MemberRegistry#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TechnicalServices/Search/BirthMonthCriteria.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/Authenticate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TechnicalServices/Search/BoatsTypeCriteria.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TechnicalServices/Search/MinimumAgeCriteria.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="30" column="14" lean-forward="true" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TechnicalServices/Search/NamePrefixCriteria.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="23" lean-forward="false" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TechnicalServices/Search/OrCriteria.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TechnicalServices/Search/AndCriteria.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TechnicalServices/Logging/Authenticate.java">
+    <entry file="uml://JAVA/">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement />
+          <nodes>
+            <node x="" y="">Model.Search.MinimumAgeCriteria</node>
+            <node x="" y="">View.DisplayInstructions</node>
+            <node x="" y="">Model.Boat.Boatstype</node>
+            <node x="" y="">Model.Boat</node>
+            <node x="" y="">Model.Search.SearchCriteria</node>
+            <node x="" y="">Model.Search.OrCriteria</node>
+            <node x="" y="">View.Console</node>
+            <node x="" y="">Controller.Administrator.ValidationType</node>
+            <node x="" y="">Controller.Administrator</node>
+            <node x="" y="">Model.Authenticate</node>
+            <node x="" y="">Model.Search.AndCriteria</node>
+            <node x="" y="">Model.Search.NamePrefixCriteria</node>
+            <node x="" y="">Model.Member</node>
+            <node x="" y="">Model.Search.BirthMonthCriteria</node>
+            <node x="" y="">Model.MemberRegistry</node>
+            <node x="" y="">Main</node>
+            <node x="" y="">TechnicalServices.Persistence.MembersDAO</node>
+            <node x="" y="">Model.Search.BoatsTypeCriteria</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.8" x="1719.0" y="666.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>Project Files</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+        <state relative-caret-position="340">
+          <caret line="20" column="11" lean-forward="true" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Member.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="53" column="20" lean-forward="true" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
+          <folding>
+            <element signature="e#1074#1075#0" expanded="true" />
+            <element signature="e#1102#1103#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Administrator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="193" column="22" lean-forward="true" selection-start-line="193" selection-start-column="22" selection-end-line="193" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/MemberRegistry.java">
+    <entry file="file://$PROJECT_DIR$/src/Model/Boat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="56" column="22" lean-forward="false" selection-start-line="56" selection-start-column="22" selection-end-line="56" selection-end-column="22" />
+        <state relative-caret-position="153">
+          <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+          <folding>
+            <element signature="e#219#220#0" expanded="true" />
+            <element signature="e#243#244#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/DisplayInstructions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="30" column="24" lean-forward="true" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/Console.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="302" column="5" lean-forward="true" selection-start-line="302" selection-start-column="5" selection-end-line="302" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#showWelcomeMessage#0;class#Console#0" expanded="false" />
+            <element signature="method#userSelection#0;class#Console#0" expanded="false" />
+            <element signature="method#showMemberRegistry#0;class#Console#0" expanded="false" />
+            <element signature="method#displayCreateMember#0;class#Console#0" expanded="false" />
+            <element signature="method#displayAddBoat#0;class#Console#0" expanded="false" />
+            <element signature="method#editMemberName#0;class#Console#0" expanded="false" />
+            <element signature="method#editBoat#0;class#Console#0" expanded="false" />
+            <element signature="method#editMemberPersonalNumber#0;class#Console#0" expanded="false" />
+            <element signature="method#displayEditMember#0;class#Console#0" expanded="false" />
+            <element signature="method#displayDeleteMember#0;class#Console#0" expanded="false" />
+            <element signature="method#displayDeleteBoat#0;class#Console#0" expanded="false" />
+            <element signature="method#displaySuccessOperation#0;class#Console#0" expanded="false" />
+            <element signature="method#exitDisplay#0;class#Console#0" expanded="false" />
+            <element signature="method#proceed#0;class#Console#0" expanded="false" />
+            <element signature="method#endSearch#0;class#Console#0" expanded="false" />
+            <element signature="method#showAuthentication#0;class#Console#0" expanded="false" />
+            <element signature="method#authenticateUsername#0;class#Console#0" expanded="false" />
+            <element signature="method#authenticatePassword#0;class#Console#0" expanded="false" />
+            <element signature="method#selectMember#0;class#Console#0" expanded="false" />
+            <element signature="method#selectBoatsType#0;class#Console#0" expanded="false" />
+            <element signature="method#selectMonth#0;class#Console#0" expanded="false" />
+            <element signature="method#selectListType#0;class#Console#0" expanded="false" />
+            <element signature="method#showCompactList#0;class#Console#0" expanded="false" />
+            <element signature="method#showVerboseList#0;class#Console#0" expanded="false" />
+            <element signature="method#displayShowBoats#0;class#Console#0" expanded="false" />
+            <element signature="method#showMemberInformation#0;class#Console#0" expanded="false" />
+            <element signature="method#DisplayMemberBoatInfo#0;class#Console#0" expanded="false" />
+            <element signature="method#getChoice#0;class#Console#0" expanded="false" />
+            <element signature="method#getInterestID#0;class#Console#0" expanded="false" />
+            <element signature="method#getInterestName#0;class#Console#0" expanded="false" />
+            <element signature="method#getInterestNr#0;class#Console#0" expanded="false" />
+            <element signature="method#isCorrect#0;class#Console#0" expanded="false" />
+            <element signature="method#checksum#0;class#Console#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
