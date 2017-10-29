@@ -28,7 +28,7 @@ public interface DisplayInstructions {
     int getInterestID();
     String getInterestName();
     String getInterestNr();
-    int getInterstAge();
+    int getInterestAge();
     Member displayDeleteMember(MemberRegistry myList);
     void displayDeleteBoat(Member b);
     Member displayCreateMember();

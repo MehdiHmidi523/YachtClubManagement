@@ -4,10 +4,6 @@ import java.util.ArrayList;
 
 import static Controller.Administrator.isValidBoat;
 
-
-/**
- * Created by Void on 28/09/2017 for the YachtClubManagement project.
- */
 public class Member {
 
     private String m_name;
@@ -63,4 +59,11 @@ public class Member {
         return false;
     }
 
+    public boolean deleteBoat(int choice) {
+        if (choice <= getM_numOfBoats()){
+            boats.remove(choice);
+            return true;
+        }
+        else return false;
+    }
 }

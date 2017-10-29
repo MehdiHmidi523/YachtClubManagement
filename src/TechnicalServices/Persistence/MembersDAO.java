@@ -9,9 +9,7 @@ import javax.xml.bind.Unmarshaller;
 import Model.MemberRegistry;
 
 public class MembersDAO {
-
-	private static final String File = "./resources/members.xml";				// as .jar
-	
+    private static final String File = "./resources/members.xml";				// as .jar
     public static MemberRegistry jaxbXMLToObject() {
         try {
             JAXBContext context = JAXBContext.newInstance(MemberRegistry.class);

@@ -1,6 +1,5 @@
 package View;
 
-import Controller.Administrator;
 import Model.Boat;
 import Model.Member;
 import Model.MemberRegistry;
@@ -205,14 +204,14 @@ public class Console implements DisplayInstructions {
     return null;
     }
     @Override public void displayDeleteBoat(Member b) {
-
         DisplayMemberBoatInfo(b.getM_boats());
         System.out.println("Which Boat do you Want to Delete ?? \nWrite Down Boat ID: ");
         int choice = getChoice(0,b.getM_numOfBoats());
-        b.getM_boats().remove(choice);
-        System.out.println(b.getM_name()+"'s updated Boats list : ");
-        DisplayMemberBoatInfo(b.getM_boats());
-        displaySuccessOperation(" DELETED BOAT FROM MEMBER AND BERTHS! ");
+        if(b.deleteBoat(choice)){
+            System.out.println(b.getM_name()+"'s updated Boats list : ");
+            DisplayMemberBoatInfo(b.getM_boats());
+            displaySuccessOperation(" DELETED BOAT FROM MEMBER AND BERTHS! ");
+        }else displayErrorMessage("Unsuccessful deletion! ");
     }
 
     /********
@@ -294,14 +293,14 @@ public class Console implements DisplayInstructions {
     }
     @Override public int selectSearch() {
         System.out.println("----------- Search Using -----------");
+        System.out.println("0.) Exit");
         System.out.println("1.) Name prefix");
         System.out.println("2.) Minimum age");
         System.out.println("3.) Birth month");
         System.out.println("4.) Boat type");
         System.out.println("5.) Nested Search: (month||(name & minimumAge))");
-        return getChoice(1,5);
+        return getChoice(0,5);
     }
-
     public int selectBoatsType(){
         System.out.println("----------- Select Boat's type -----------");
         for (int i = 0; i< Boat.Boatstype.values().length; i++ ){
@@ -312,18 +311,18 @@ public class Console implements DisplayInstructions {
     }
     public int selectMonth(){
         System.out.println("----------- Select Month -----------");
-        System.out.println("1.) January");
-        System.out.println("2.) February");
-        System.out.println("3.) March");
-        System.out.println("4.) April");
-        System.out.println("5.) May");
-        System.out.println("6.) June");
-        System.out.println("7.) July");
-        System.out.println("8.) August");
-        System.out.println("9.) September");
-        System.out.println("10.) October");
-        System.out.println("11.) November");
-        System.out.println("12.) December");
+        System.out.println("1) January");
+        System.out.println("2) February");
+        System.out.println("3) March");
+        System.out.println("4) April");
+        System.out.println("5) May");
+        System.out.println("6) June");
+        System.out.println("7) July");
+        System.out.println("8) August");
+        System.out.println("9) September");
+        System.out.println("10) October");
+        System.out.println("11) November");
+        System.out.println("12) December");
         return getChoice(1,12);
     }
 
@@ -431,9 +430,14 @@ public class Console implements DisplayInstructions {
         }while(swedId.length()>=10 && isCorrect(swedId, getFirstPart(swedId), getSecondPart(swedId)));
         return swedId;
     }
-    @Override public int getInterstAge() {
-
-
+    @Override public int getInterestAge() {
+        try{
+            int age;
+            do{
+               age= sc.nextInt();
+            }while (age< 0);
+            return age;
+        }catch(InputMismatchException e){ displayErrorMessage(": SYNTAX ERROR!!"); }
         return 0;
     }
 

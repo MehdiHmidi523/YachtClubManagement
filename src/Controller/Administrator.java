@@ -9,11 +9,12 @@ import View.DisplayInstructions;
 
 import java.util.InputMismatchException;
 
-public class Administrator {
+public class Administrator { // needs to validate the data inputs from the view
 
     private MemberRegistry Registry;
     private DisplayInstructions myConsole;
     private Authenticate auth = new Authenticate();
+
     public Administrator(DisplayInstructions myView){ //initialize()
         setMyDisplay(myView);
         Registry = TechnicalServices.Persistence.MembersDAO.jaxbXMLToObject();
@@ -26,6 +27,7 @@ public class Administrator {
                 int command = myConsole.userSelection();
                 if(command ==0){
                     myConsole.exitDisplay();
+                    break;
                 }
                 else if(command ==1){//Type of list, handled in the view attempted high cohesion.
                     myConsole.showMemberRegistry(Registry.getMemberList());
@@ -34,19 +36,22 @@ public class Administrator {
                 }else if (command ==3){//Create a new member.
                     if (auth.isLogged() || login()){
                         createMember();
+                        TechnicalServices.Persistence.MembersDAO.jaxbObjectToXML(Registry);
                     }
                 }else if(command ==4){//Edit a members/boats information
                     if (auth.isLogged() || login()){
-                        if(Registry.getM_count()!=0)
+                        if(Registry.getM_count()!=0){
                             editMember();
-                        else
+                            TechnicalServices.Persistence.MembersDAO.jaxbObjectToXML(Registry);
+                        } else
                             myConsole.displayErrorMessage("Registry is Empty");
                     }
                 } else if(command ==5){
                     if (auth.isLogged() || login()){
-                        if(Registry.getM_count()!=0)
+                        if(Registry.getM_count()!=0){
                             deleteMember();
-                        else
+                            TechnicalServices.Persistence.MembersDAO.jaxbObjectToXML(Registry);
+                        } else
                             myConsole.displayErrorMessage("Registry is Empty");
                     }
                 } else if(command ==6){
@@ -62,28 +67,20 @@ public class Administrator {
                     myConsole.exitDisplay();
                 }
             }while(i!=1 || myConsole.proceed());
+            myConsole.displaySuccessOperation("Saved Session!");
+            TechnicalServices.Persistence.MembersDAO.jaxbObjectToXML(Registry);
         }catch (InputMismatchException e){
             myConsole.displayErrorMessage("Input Mismatch! System Exit");
             myConsole.exitDisplay();
         }
-        myConsole.displaySuccessOperation("Saved Session!");
-        TechnicalServices.Persistence.MembersDAO.jaxbObjectToXML(Registry);
     }
 
-    /*
-     * Creates an Instance of a member and gets its Data from the user.
-     * Checks Member information is Valid then adds Member to MemberRegistry.
-     */
     private void createMember(){
         Member me = myConsole.displayCreateMember();
         if(!Registry.addMember(me) || addBoatsToMember(me)){
             myConsole.displaySuccessOperation("CREATED A NEW MEMBER");
         }
     }
-
-    /*
-     *Add the number of boats to the last member in the member registry.
-     */
     private boolean addBoatsToMember(Member nw){
         int b=nw.getM_numOfBoats();
         for(int i=0;i<b;i++){
@@ -99,10 +96,8 @@ public class Administrator {
         }
         return true;
     }
-
     private void deleteMember() {
-        myConsole.showVerboseList(Registry.getMemberList());  //display registry then display selection option then check validity of member
-
+        myConsole.showVerboseList(Registry.getMemberList());  //display registry then display selection option to check validity of member
         Member my=selectMember(Registry);
         if(my==null ||!isValidMember(my))
             myConsole.displayErrorMessage(" MEMBER NOT FOUND !");
@@ -115,7 +110,6 @@ public class Administrator {
                 myConsole.displayErrorMessage("MEMBER NOT FOUND!");
         }
     }
-
     private void editMember() {// a much better separation of MV has been achieved in this iteration.
         myConsole.showVerboseList(Registry.getMemberList());
         Member my = selectMember(Registry);
@@ -127,11 +121,9 @@ public class Administrator {
              myConsole.displaySuccessOperation("Edited Member");
         }
     }
-
     private void setMyDisplay(DisplayInstructions myConsole) {
         this.myConsole = myConsole;
     }
-
     private Member selectMember(MemberRegistry myList){
         int choice= myConsole.selectMember();  // get user input.
         Member m = new Member();
@@ -148,17 +140,15 @@ public class Administrator {
             String str= myConsole.getInterestName();
             m = myList.nameMember(str);
         } else if(choice==3) {
-            String pnum = myConsole.getInterestNr();
-            if(!pnum.equals("")){
-               // pnum = pnum.replace("-", "");
-                m = myList.socialMember(pnum);
+            String num = myConsole.getInterestNr();
+            if(!num.equals("")){
+                m = myList.socialMember(num);
             }else {
                 m=null;
             }
         }
         return m;
     }
-
     private boolean login(){
         myConsole.showAuthentication();
         String username = myConsole.authenticateUsername();
@@ -167,19 +157,19 @@ public class Administrator {
         else myConsole.showInvalidLogin();
         return auth.isLogged();
     }
-
     private MemberRegistry searchMembers(){
         int i = myConsole.selectSearch();
         MemberRegistry search_list = new MemberRegistry();
 
         switch (i){
+            case 0: break;
             case 1: {
                 SearchCriteria byName = new NamePrefixCriteria(myConsole.getInterestName());
                 search_list = byName.meetCriteria(Registry);
             }
             break;
             case 2: {
-                SearchCriteria byAge = new MinimumAgeCriteria(myConsole.getInteresAge());
+                SearchCriteria byAge = new MinimumAgeCriteria(myConsole.getInterestAge());
                 search_list = byAge.meetCriteria(Registry);
             }
             break;
@@ -196,7 +186,7 @@ public class Administrator {
             case 5: {     	// (month||(name & minimumAge)
                 SearchCriteria byBirthMonth = new BirthMonthCriteria(myConsole.selectMonth());
                 SearchCriteria byName = new NamePrefixCriteria(myConsole.getInterestName());
-                SearchCriteria byAge = new MinimumAgeCriteria(Integer.parseInt(myConsole.getInteresAge()));
+                SearchCriteria byAge = new MinimumAgeCriteria(myConsole.getInterestAge());
                 SearchCriteria byNameAndAge = new AndCriteria(byName,byAge);
                 SearchCriteria byBirthMonthOrNestedNameAndAge = new OrCriteria(byBirthMonth, byNameAndAge);
                 search_list = byBirthMonthOrNestedNameAndAge.meetCriteria(Registry);
@@ -204,12 +194,9 @@ public class Administrator {
         }
         return search_list;
     }
-
-
     public static boolean isValidMember(Member man) {
         return man != null && man.getM_name() != null && man.getM_personal_number() != null  && man.getM_numOfBoats() != 0;
     }
-
     public static boolean isValidBoat(Boat machine) {
         return machine != null && machine.getB_Name() != null && machine.getLength() != 0 && machine.getType() != null;
     }

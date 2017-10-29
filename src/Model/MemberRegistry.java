@@ -8,19 +8,12 @@ import java.util.ArrayList;
 
 import static Controller.Administrator.isValidMember;
 
-
-/**
- * Created by Void on 28/09/2017 for the YachtClubManagement project.
- */
-
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class MemberRegistry {
 
     @XmlElement(name="member")
     private ArrayList<Member> memberList=new ArrayList<Member>();
-
-    private int count=memberList.size();
 
     public MemberRegistry(){}
     public MemberRegistry(ArrayList persistentModel){
