@@ -394,7 +394,7 @@ public class Console implements DisplayInstructions {
             do{
                 System.out.println("Please select Instruction Number");
                 choice = sc.nextInt();
-            }while(choice>last || choice<first); // logical OR || so that the loop continues if one of the conditions is not correct
+            }while(choice>=last && choice=<first); // logical OR || so that the loop continues if one of the conditions is not correct
             return choice;
         }catch(InputMismatchException i){
             //System.err.println("ERROR is in getChoice() CONTINUE ");
